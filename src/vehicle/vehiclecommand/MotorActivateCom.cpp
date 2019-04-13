@@ -14,7 +14,7 @@ void MotorActivateCom::execute(AbstractVehicle &vehicle) {
     Serial.print("left motor run at speed :");
     Serial.println(leftSpeed);
     int16_t rightSpeed =
-            vehicle.getBackwardTen() - vehicle.getBackwardTen() + vehicle.getLeftTen() - vehicle.getRightTen();
+            vehicle.getForwardTen() - vehicle.getBackwardTen() + vehicle.getLeftTen() - vehicle.getRightTen();
     vehicle.getRightMotor().drive(rightSpeed);
     Serial.print("right motor run at speed :");
     Serial.println(rightSpeed);

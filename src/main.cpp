@@ -24,10 +24,11 @@ void setup() {
 }
 
 void loop() {
-    if (ble.available()) {
+    while (ble.available()) {
         String c = ble.readStringUntil(';');
         Serial.println(c);
         vehicle.command(c);
     }
     vehicle.update();
+    delay(20);
 }

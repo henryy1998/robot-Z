@@ -18,8 +18,6 @@ public:
 
     void update() override;
 
-    void configurate(Command **commands) override;
-
 private:
     TenChangeCom left;
     TenChangeCom right;

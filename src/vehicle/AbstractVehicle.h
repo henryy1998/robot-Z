@@ -15,7 +15,6 @@ public:
     AbstractVehicle(uint8_t leftPin1, uint8_t leftPin2, uint8_t leftPinEna, uint8_t rightPin1, uint8_t rightPin2,
                     uint8_t rightPinEna) : leftMotor(leftPinEna, leftPin1, leftPin2),
                                            rightMotor(rightPinEna, rightPin1, rightPin2) {
-        configurate(commands);
     }
 
     void command(const String &command) {
@@ -28,7 +27,6 @@ public:
 
     virtual void update() = 0;
 
-    virtual void configurate(Command **commands) = 0;
 
     Motor &getLeftMotor() {
         return leftMotor;
@@ -52,6 +50,10 @@ public:
 
     uint8_t &getBackwardTen() {
         return backwardTen;
+    }
+
+    Command **const getCommands() {
+        return commands;
     }
 
 private:
