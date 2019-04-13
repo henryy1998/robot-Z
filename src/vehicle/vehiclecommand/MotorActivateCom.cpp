@@ -4,9 +4,10 @@
 
 #include "MotorActivateCom.h"
 
-MotorActivateCom::MotorActivateCom(Vehicle &vehicle, const String &identifier) : VehicleCommand(vehicle, identifier) {}
+MotorActivateCom::MotorActivateCom(AbstractVehicle &vehicle, const String &identifier) : VehicleCommand(vehicle,
+                                                                                                        identifier) {}
 
-void MotorActivateCom::execute(Vehicle &vehicle) {
+void MotorActivateCom::execute(AbstractVehicle &vehicle) {
     int16_t leftSpeed =
             vehicle.getForwardTen() - vehicle.getBackwardTen() + vehicle.getRightTen() - vehicle.getLeftTen();
     vehicle.getLeftMotor().drive(leftSpeed);

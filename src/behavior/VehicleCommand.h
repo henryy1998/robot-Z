@@ -6,19 +6,19 @@
 #define ROBOT_Z_VEHICLECOMMAND_H
 
 
-#include "Vehicle.h"
+#include "vehicle/AbstractVehicle.h"
 
 class VehicleCommand : public Command {
 public:
-    VehicleCommand(Vehicle &vehicle, const String &identifier) : vehicle(vehicle), Command(identifier) {
+    VehicleCommand(AbstractVehicle &vehicle, const String &identifier) : vehicle(vehicle), Command(identifier) {
     }
 
     void execute() override;
 
 private:
-    virtual void execute(Vehicle &vehicle) = 0;
+    virtual void execute(AbstractVehicle &vehicle) = 0;
 
-    Vehicle &vehicle;
+    AbstractVehicle &vehicle;
 
 };
 

@@ -6,14 +6,14 @@
 #define ROBOT_Z_TENDAMPCOM_H
 
 
-#include <VehicleCommand.h>
+#include <behavior/VehicleCommand.h>
 
 class TenDampCom : public VehicleCommand {
 public:
-    TenDampCom(Vehicle &vehicle, const String &identifier);
+    TenDampCom(AbstractVehicle &vehicle, const String &identifier);
 
 private:
-    void execute(Vehicle &vehicle) override;
+    void execute(AbstractVehicle &vehicle) override;
 };
 
 

@@ -6,16 +6,16 @@
 #define ROBOT_Z_TENCHANGECOM_H
 
 
-#include <VehicleCommand.h>
+#include <behavior/VehicleCommand.h>
 
 class TenChangeCom : public VehicleCommand {
 public:
-    TenChangeCom(Vehicle &vehicle, String &&identifier, uint8_t &ten);
+    TenChangeCom(AbstractVehicle &vehicle, String &&identifier, uint8_t &ten);
 
 private:
     uint8_t &ten;
 
-    void execute(Vehicle &vehicle) override;
+    void execute(AbstractVehicle &vehicle) override;
 
 };
 

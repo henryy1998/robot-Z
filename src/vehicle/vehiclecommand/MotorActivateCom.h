@@ -6,14 +6,14 @@
 #define ROBOT_Z_MOTORACTIVATECOM_H
 
 
-#include <VehicleCommand.h>
+#include <behavior/VehicleCommand.h>
 
 class MotorActivateCom : public VehicleCommand {
 public:
-    MotorActivateCom(Vehicle &vehicle, const String &identifier);
+    MotorActivateCom(AbstractVehicle &vehicle, const String &identifier);
 
 private:
-    void execute(Vehicle &vehicle) override;
+    void execute(AbstractVehicle &vehicle) override;
 };
 
 
