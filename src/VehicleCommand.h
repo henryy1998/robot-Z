@@ -1,5 +1,3 @@
-#include <utility>
-
 //
 // Created by fulva on 4/12/19.
 //
@@ -12,10 +10,14 @@
 
 class VehicleCommand : public Command {
 public:
-    VehicleCommand(Vehicle &vehicle, String &&identifier) : vehicle(vehicle), Command(identifier) {
-    };
+    VehicleCommand(Vehicle &vehicle, const String &identifier) : vehicle(vehicle), Command(identifier) {
+    }
+
+    void execute() override;
 
 private:
+    virtual void execute(Vehicle &vehicle) = 0;
+
     Vehicle &vehicle;
 
 };

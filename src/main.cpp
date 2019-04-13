@@ -7,7 +7,7 @@
 
 #define BLE_RX 3
 #define BLE_TX 2
-SoftwareSerial ble(2, 3);
+SoftwareSerial ble(BLE_TX, BLE_RX);
 
 void setup() {
     ble.begin(9600);

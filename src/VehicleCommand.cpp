@@ -3,3 +3,7 @@
 //
 
 #include "VehicleCommand.h"
+
+void VehicleCommand::execute() {
+    execute(vehicle);
+}

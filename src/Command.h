@@ -10,7 +10,7 @@
 
 class Command {
 public:
-    explicit Command(String &&identifier);
+    explicit Command(const String &identifier);
 
     String toString();
 
