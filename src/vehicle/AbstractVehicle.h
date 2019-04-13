@@ -58,10 +58,10 @@ public:
 
 private:
     Command *commands[10];
-    uint8_t rightTen;
-    uint8_t leftTen;
-    uint8_t forwardTen;
-    uint8_t backwardTen;
+    uint8_t rightTen{0};
+    uint8_t leftTen{0};
+    uint8_t forwardTen{0};
+    uint8_t backwardTen{0};
     Motor leftMotor;
     Motor rightMotor;
 };
