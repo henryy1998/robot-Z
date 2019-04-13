@@ -12,7 +12,7 @@ class Command {
 public:
     explicit Command(const String &identifier);
 
-    String toString();
+    const String &toString();
 
     virtual void execute() = 0;
 

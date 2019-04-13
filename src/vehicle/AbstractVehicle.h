@@ -18,7 +18,7 @@ public:
         configurate(commands);
     }
 
-    void command(String command) {
+    void command(const String &command) {
         for (Command *command1:commands) {
             if (command1->toString() == command) {
                 command1->execute();

@@ -5,8 +5,8 @@
 #include "Command.h"
 
 
-String Command::toString() {
-    return String();
+const String &Command::toString() {
+    return identifier;
 }
 
 Command::Command(const String &identifier) : identifier(identifier) {

@@ -17,8 +17,8 @@ ConcreteVehicle::ConcreteVehicle(uint8_t leftPin1, uint8_t leftPin2, uint8_t lef
         tenDampCom(*this, "ten damping") {}
 
 void ConcreteVehicle::update() {
-    dynamic_cast<VehicleCommand *>(&motorActivateCom)->execute();
-    dynamic_cast<VehicleCommand *>(&tenDampCom)->execute();
+    dynamic_cast<VehicleCommand &>(motorActivateCom).execute();
+    dynamic_cast<VehicleCommand &>(tenDampCom).execute();
 
 }
 
