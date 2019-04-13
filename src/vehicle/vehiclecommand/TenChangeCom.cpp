@@ -9,5 +9,5 @@ TenChangeCom::TenChangeCom(AbstractVehicle &vehicle, String &&identifier, uint8_
                                                                                           ten(ten) {}
 
 void TenChangeCom::execute(AbstractVehicle &vehicle) {
-    ten = UINT8_MAX;
+    ten = min(ten + 20, UINT8_MAX);
 }
