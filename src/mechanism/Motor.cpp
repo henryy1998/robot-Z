@@ -25,5 +25,5 @@ void Motor::drive(int16_t speed) {
     if (speed > UINT8_MAX) {
         speed = UINT8_MAX;
     }
-    analogWrite(pin_ena, abs(speed));
+    analogWrite(pin_ena, speed);
 }

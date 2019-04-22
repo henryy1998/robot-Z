@@ -26,9 +26,16 @@ void setup() {
 void loop() {
     while (ble.available()) {
         String c = ble.readStringUntil(';');
+        String params[5];
+        uint8_t count(0);
+        int i;
+        while ((i = c.lastIndexOf(":")) != -1) {
+            c.substring(0, i);
+            params[count++] = c.substring(i);
+        }
         Serial.println(c);
         vehicle.command(c);
     }
     vehicle.update();
-    delay(20);
+    delay(50);
 }
