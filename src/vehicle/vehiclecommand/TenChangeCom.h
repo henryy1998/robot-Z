@@ -10,7 +10,6 @@
 
 class TenChangeCom : public VehicleCommand {
 public:
-//     TODO change string identifier type to const lvalue reference
     TenChangeCom(AbstractVehicle &vehicle, const String &identifier, uint8_t &ten);
 
 private:

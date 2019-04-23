@@ -4,8 +4,6 @@
 
 #include "TenChangeCom.h"
 
-const uint8_t increment(10);
-
 TenChangeCom::TenChangeCom(AbstractVehicle &vehicle, const String &identifier, uint8_t &ten) : VehicleCommand(vehicle,
                                                                                                               identifier),
                                                                                                ten(ten) {}
