@@ -14,8 +14,9 @@
 #define APIN2 8 //connect to l298n pin2
 #define BPIN1 12 //connect to l298n pin3
 #define BPIN2 13 //connect to l298n pin4
+#define DEBUG
 SoftwareSerial ble(BLE_TX, BLE_RX);
-
+int16_t params[5];
 ConcreteVehicle vehicle(APIN1, APIN2, ENA, BPIN1, BPIN2, ENB);
 
 void setup() {
@@ -26,16 +27,15 @@ void setup() {
 void loop() {
     while (ble.available()) {
         String c = ble.readStringUntil(';');
-        String params[5];
         uint8_t count(0);
         int i;
         while ((i = c.lastIndexOf(":")) != -1) {
-            params[count++] = c.substring(i);
-            Serial.println(c.substring(i));
+            params[count++] = c.substring(i + 1).toInt();
+            Serial.println(c.substring(i + 1));
             c = c.substring(0, i);
         }
         Serial.println(c);
-        vehicle.command(c, nullptr);
+        vehicle.command(c, params);
     }
     vehicle.update();
     delay(50);

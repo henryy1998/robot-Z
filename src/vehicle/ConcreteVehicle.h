@@ -21,10 +21,7 @@ public:
 private:
     TenChangeCom left;
     TenChangeCom right;
-    TenChangeCom forward;
-    TenChangeCom backward;
     MotorActivateCom motorActivateCom;
-    TenDampCom tenDampCom;
 };
 
 

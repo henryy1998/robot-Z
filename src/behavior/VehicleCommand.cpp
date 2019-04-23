@@ -4,6 +4,6 @@
 
 #include "VehicleCommand.h"
 
-void VehicleCommand::execute(const String params[5]) {
-    execute(vehicle, nullptr);
+void VehicleCommand::execute(const int16_t *params) {
+    execute(vehicle, params);
 }

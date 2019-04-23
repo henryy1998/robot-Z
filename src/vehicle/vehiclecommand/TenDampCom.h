@@ -13,7 +13,7 @@ public:
     TenDampCom(AbstractVehicle &vehicle, const String &identifier);
 
 private:
-    void execute(AbstractVehicle &vehicle, const String params[5]) override;
+    void execute(AbstractVehicle &vehicle, const int16_t *params) override;
 };
 
 

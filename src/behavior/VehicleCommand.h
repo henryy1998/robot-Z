@@ -13,10 +13,10 @@ public:
     VehicleCommand(AbstractVehicle &vehicle, const String &identifier) : vehicle(vehicle), Command(identifier) {
     }
 
-    void execute(const String params[5]) override;
+    void execute(const int16_t *params) override;
 
 private:
-    virtual void execute(AbstractVehicle &vehicle, const String params[5]) = 0;
+    virtual void execute(AbstractVehicle &vehicle, const int16_t *params) = 0;
 
     AbstractVehicle &vehicle;
 

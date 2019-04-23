@@ -17,10 +17,10 @@ public:
                                            rightMotor(rightPinEna, rightPin1, rightPin2) {
     }
 
-    void command(const String &command, const String params[5]) {
+    void command(const String &command, const int16_t params[5]) {
         for (Command *command1:commands) {
             if (command1->toString() == command) {
-                command1->execute(nullptr);
+                command1->execute(params);
             }
         }
     }
@@ -36,32 +36,32 @@ public:
         return rightMotor;
     }
 
-    uint8_t &getRightTen() {
+    int16_t &getRightTen() {
         return rightTen;
     }
 
-    uint8_t &getLeftTen() {
+    int16_t &getLeftTen() {
         return leftTen;
-    }
-
-    uint8_t &getForwardTen() {
-        return forwardTen;
-    }
-
-    uint8_t &getBackwardTen() {
-        return backwardTen;
     }
 
     Command **const getCommands() {
         return commands;
     }
 
+    int16_t &getRightMotorSpeed() {
+        return rightMotorSpeed;
+    }
+
+    int16_t &getLeftMotorSpeed() {
+        return leftMotorSpeed;
+    }
+
 private:
     Command *commands[10];
-    uint8_t rightTen{0};
-    uint8_t leftTen{0};
-    uint8_t forwardTen{0};
-    uint8_t backwardTen{0};
+    int16_t rightTen{0};
+    int16_t leftTen{0};
+    int16_t rightMotorSpeed{0};
+    int16_t leftMotorSpeed{0};
     Motor leftMotor;
     Motor rightMotor;
 };

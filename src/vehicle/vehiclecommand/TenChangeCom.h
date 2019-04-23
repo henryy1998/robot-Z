@@ -10,12 +10,12 @@
 
 class TenChangeCom : public VehicleCommand {
 public:
-    TenChangeCom(AbstractVehicle &vehicle, const String &identifier, uint8_t &ten);
+    TenChangeCom(AbstractVehicle &vehicle, const String &identifier, int16_t &ten);
 
 private:
-    uint8_t &ten;
+    int16_t &ten;
 
-    void execute(AbstractVehicle &vehicle, const String params[5]) override;
+    void execute(AbstractVehicle &vehicle, const int16_t *params) override;
 
 };
 

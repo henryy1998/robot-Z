@@ -4,18 +4,27 @@
 
 #include "MotorActivateCom.h"
 
+const static double damping = 0.5;
+
 MotorActivateCom::MotorActivateCom(AbstractVehicle &vehicle, const String &identifier) : VehicleCommand(vehicle,
                                                                                                         identifier) {}
 
-void MotorActivateCom::execute(AbstractVehicle &vehicle, const String params[5]) {
-    int16_t leftSpeed =
-            vehicle.getForwardTen() - vehicle.getBackwardTen() + vehicle.getRightTen() - vehicle.getLeftTen();
+void MotorActivateCom::execute(AbstractVehicle &vehicle, const int16_t *params) {
+    int16_t &leftSpeed = vehicle.getLeftMotorSpeed();
+    int16_t const leftTen = vehicle.getLeftTen();
+#ifdef DEBUG
+    Serial.print("leftTen :");
+    Serial.println(leftTen);
+#endif
+    double leftCre = damping * (leftTen - leftSpeed);
+    leftSpeed = leftCre + leftSpeed;
     vehicle.getLeftMotor().drive(leftSpeed);
     Serial.print("left motor run at speed :");
     Serial.println(leftSpeed);
-    int16_t rightSpeed =
-            vehicle.getForwardTen() - vehicle.getBackwardTen() + vehicle.getLeftTen() - vehicle.getRightTen();
-    vehicle.getRightMotor().drive(rightSpeed);
+    int16_t &rightSpeed = vehicle.getRightMotorSpeed();
+    int16_t const rightTen = vehicle.getRightTen();
+    double rightCre = damping * (rightTen - rightSpeed);
+    rightSpeed = rightCre + rightSpeed;
     Serial.print("right motor run at speed :");
     Serial.println(rightSpeed);
 }
