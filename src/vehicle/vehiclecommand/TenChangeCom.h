@@ -11,12 +11,12 @@
 class TenChangeCom : public VehicleCommand {
 public:
 //     TODO change string identifier type to const lvalue reference
-    TenChangeCom(AbstractVehicle &vehicle, String &&identifier, uint8_t &ten);
+    TenChangeCom(AbstractVehicle &vehicle, const String &identifier, uint8_t &ten);
 
 private:
     uint8_t &ten;
 
-    void execute(AbstractVehicle &vehicle) override;
+    void execute(AbstractVehicle &vehicle, const String params[5]) override;
 
 };
 

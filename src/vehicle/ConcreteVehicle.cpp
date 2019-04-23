@@ -23,7 +23,7 @@ ConcreteVehicle::ConcreteVehicle(uint8_t leftPin1, uint8_t leftPin2, uint8_t lef
 }
 
 void ConcreteVehicle::update() {
-    dynamic_cast<VehicleCommand &>(motorActivateCom).execute();
-    dynamic_cast<VehicleCommand &>(tenDampCom).execute();
+    dynamic_cast<VehicleCommand &>(motorActivateCom).execute(nullptr);
+    dynamic_cast<VehicleCommand &>(tenDampCom).execute(nullptr);
 
 }

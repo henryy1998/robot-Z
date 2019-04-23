@@ -17,10 +17,10 @@ public:
                                            rightMotor(rightPinEna, rightPin1, rightPin2) {
     }
 
-    void command(const String &command) {
+    void command(const String &command, const String params[5]) {
         for (Command *command1:commands) {
             if (command1->toString() == command) {
-                command1->execute();
+                command1->execute(nullptr);
             }
         }
     }

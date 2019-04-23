@@ -30,11 +30,12 @@ void loop() {
         uint8_t count(0);
         int i;
         while ((i = c.lastIndexOf(":")) != -1) {
-            c.substring(0, i);
             params[count++] = c.substring(i);
+            Serial.println(c.substring(i));
+            c = c.substring(0, i);
         }
         Serial.println(c);
-        vehicle.command(c);
+        vehicle.command(c, nullptr);
     }
     vehicle.update();
     delay(50);

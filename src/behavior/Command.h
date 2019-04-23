@@ -14,7 +14,7 @@ public:
 
     const String &toString();
 
-    virtual void execute() = 0;
+    virtual void execute(const String params[5]) = 0;
 
 private:
     String identifier;
