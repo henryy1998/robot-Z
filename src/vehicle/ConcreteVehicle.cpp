@@ -11,14 +11,14 @@ ConcreteVehicle::ConcreteVehicle(uint8_t leftPin1, uint8_t leftPin2, uint8_t lef
                         rightPin2, rightPinEna, servoPin),
         left(*this, "left", this->getLeftTen()),
         right(*this, "right", this->getRightTen()),
-        motorActivateCom(*this, "motor roll"),
+        leftMotorActivateCom(*this, "leftA", this->getLeftMotor(), this->getLeftTen(), this->getLeftMotorSpeed()),
+        rightMotorActivateCom(*this, "rightA", this->getRightMotor(), this->getRightTen(), this->getRightMotorSpeed()),
+
         servoControllCom(*this, "servo1", this->getServo()) {
     Command **const commands = getCommands();
     commands[0] = &left;
     commands[1] = &right;
     commands[2] = &servoControllCom;
-}
-
-void ConcreteVehicle::update() {
-    dynamic_cast<VehicleCommand &>(motorActivateCom).execute(nullptr);
+    commands[3] = &leftMotorActivateCom;
+    commands[4] = &rightMotorActivateCom;
 }

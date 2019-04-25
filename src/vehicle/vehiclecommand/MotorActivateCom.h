@@ -10,10 +10,15 @@
 
 class MotorActivateCom : public VehicleCommand {
 public:
-    MotorActivateCom(AbstractVehicle &vehicle, const String &identifier);
+    MotorActivateCom(AbstractVehicle &vehicle, const String &identifier, Motor &motor, const int16_t &target,
+                     int16_t &cSpeed);
 
 private:
     void execute(AbstractVehicle &vehicle, const int16_t *params) override;
+
+    Motor &motor;
+    const int16_t &target;
+    int16_t &cSpeed;
 };
 
 

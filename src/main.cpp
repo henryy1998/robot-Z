@@ -37,6 +37,7 @@ void loop() {
         Serial.println(c);
         vehicle.command(c, params);
     }
-    vehicle.update();
+    vehicle.command("leftA", nullptr);
+    vehicle.command("rightA", nullptr);
     delay(50);
 }

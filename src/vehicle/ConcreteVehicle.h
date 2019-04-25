@@ -22,7 +22,8 @@ public:
 private:
     TenChangeCom left;
     TenChangeCom right;
-    MotorActivateCom motorActivateCom;
+    MotorActivateCom leftMotorActivateCom;
+    MotorActivateCom rightMotorActivateCom;
     ServoControllCom servoControllCom;
 };
 
