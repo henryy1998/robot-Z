@@ -21,10 +21,13 @@ void MotorActivateCom::execute(AbstractVehicle &vehicle, const int16_t *params) 
     vehicle.getLeftMotor().drive(leftSpeed);
     Serial.print("left motor run at speed :");
     Serial.println(leftSpeed);
+
+    
     int16_t &rightSpeed = vehicle.getRightMotorSpeed();
     int16_t const rightTen = vehicle.getRightTen();
     double rightCre = damping * (rightTen - rightSpeed);
     rightSpeed = rightCre + rightSpeed;
+    vehicle.getRightMotor().drive(rightSpeed);
     Serial.print("right motor run at speed :");
     Serial.println(rightSpeed);
 }
