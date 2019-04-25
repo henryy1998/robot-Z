@@ -4,7 +4,7 @@
 
 #include "MotorActivateCom.h"
 
-const static double damping = 0.5;
+const static double damping = 0.3;
 
 MotorActivateCom::MotorActivateCom(AbstractVehicle &vehicle, const String &identifier) : VehicleCommand(vehicle,
                                                                                                         identifier) {}
