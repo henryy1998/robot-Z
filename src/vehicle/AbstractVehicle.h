@@ -25,8 +25,6 @@ public:
         }
     }
 
-    virtual void update() = 0;
-
 
     Motor &getLeftMotor() {
         return leftMotor;
