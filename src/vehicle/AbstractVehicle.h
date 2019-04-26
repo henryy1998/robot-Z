@@ -10,6 +10,7 @@
 #include <Servo.h>
 #include "behavior/Command.h"
 #include "mechanism/Motor.h"
+#include <Stepper.h>
 
 class AbstractVehicle {
 public:
