@@ -7,15 +7,15 @@
 
 
 #include <WString.h>
+#include <Servo.h>
 #include "behavior/Command.h"
 #include "mechanism/Motor.h"
+#include <Stepper.h>
 
 class AbstractVehicle {
 public:
     AbstractVehicle(uint8_t leftPin1, uint8_t leftPin2, uint8_t leftPinEna, uint8_t rightPin1, uint8_t rightPin2,
-                    uint8_t rightPinEna) : leftMotor(leftPinEna, leftPin1, leftPin2),
-                                           rightMotor(rightPinEna, rightPin1, rightPin2) {
-    }
+                    uint8_t rightPinEna, uint8_t servoPin);
 
     void command(const String &command, const int16_t params[5]) {
         for (Command *command1:commands) {
@@ -56,14 +56,20 @@ public:
         return leftMotorSpeed;
     }
 
+    Servo &getServo() {
+        return servo;
+    }
+
 private:
-    Command *commands[10];
+    Command *commands[10]{};
     int16_t rightTen{0};
     int16_t leftTen{0};
     int16_t rightMotorSpeed{0};
     int16_t leftMotorSpeed{0};
     Motor leftMotor;
     Motor rightMotor;
+    Servo servo;
+
 };
 
 

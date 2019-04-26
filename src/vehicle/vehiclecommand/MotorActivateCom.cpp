@@ -6,28 +6,18 @@
 
 const static double damping = 0.3;
 
-MotorActivateCom::MotorActivateCom(AbstractVehicle &vehicle, const String &identifier) : VehicleCommand(vehicle,
-                                                                                                        identifier) {}
+MotorActivateCom::MotorActivateCom(AbstractVehicle &vehicle, const String &identifier, Motor &motor,
+                                   const int16_t &target,
+                                   int16_t &cSpeed) :
+        VehicleCommand(vehicle, identifier),
+        motor(motor),
+        target(target),
+        cSpeed(cSpeed) {}
 
 void MotorActivateCom::execute(AbstractVehicle &vehicle, const int16_t *params) {
-    int16_t &leftSpeed = vehicle.getLeftMotorSpeed();
-    int16_t const leftTen = vehicle.getLeftTen();
-#ifdef DEBUG
-    Serial.print("leftTen :");
-    Serial.println(leftTen);
-#endif
-    double leftCre = damping * (leftTen - leftSpeed);
-    leftSpeed = leftCre + leftSpeed;
-    vehicle.getLeftMotor().drive(leftSpeed);
-    Serial.print("left motor run at speed :");
-    Serial.println(leftSpeed);
-
-    
-    int16_t &rightSpeed = vehicle.getRightMotorSpeed();
-    int16_t const rightTen = vehicle.getRightTen();
-    double rightCre = damping * (rightTen - rightSpeed);
-    rightSpeed = rightCre + rightSpeed;
-    vehicle.getRightMotor().drive(rightSpeed);
-    Serial.print("right motor run at speed :");
-    Serial.println(rightSpeed);
+    double cre = damping * (target - cSpeed);
+    cSpeed = cre + cSpeed;
+    motor.drive(cSpeed);
+    Serial.print("drive motor run at speed :");
+    Serial.println(cSpeed);
 }
