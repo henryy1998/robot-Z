@@ -27,7 +27,7 @@
 SoftwareSerial ble(BLE_TX, BLE_RX);
 int16_t params[5];
 ConcreteVehicle vehicle(APIN1, APIN2, ENA, BPIN1, BPIN2, ENB, SERVO_PIN,
-                        Stepper(48, STEPPER1_PIN1, STEPPER1_PIN2, STEPPER1_PIN3, STEPPER1_PIN4),
+                        Stepper(48, STEPPER1_PIN4, STEPPER1_PIN2, STEPPER1_PIN3, STEPPER1_PIN1),
                         Stepper(48, STEPPER2_PIN1, STEPPER2_PIN2, STEPPER2_PIN3, STEPPER2_PIN4));
 
 void setup() {

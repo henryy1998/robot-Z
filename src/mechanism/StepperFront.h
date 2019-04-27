@@ -15,6 +15,8 @@ public:
 public:
     void setTarget(int16_t target);
     void activate();
+
+    Stepper &getStepper();
 private:
     Stepper stepper;
     int16_t curPos;

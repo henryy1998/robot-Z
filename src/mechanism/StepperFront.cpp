@@ -5,6 +5,8 @@
 #include <HID.h>
 #include "StepperFront.h"
 
+#define DISTANCE 25
+
 StepperFront::StepperFront(Stepper stepper) :
         stepper(stepper), curPos(0), target(0) {}
 
@@ -13,13 +15,17 @@ void StepperFront::setTarget(int16_t target) {
 }
 
 void StepperFront::activate() {
-    if (target - curPos > 0) {
-        stepper.step(1);
-        curPos++;
+    if (target - curPos > DISTANCE) {
+        stepper.step(DISTANCE);
+        curPos += DISTANCE;
         Serial.println("step forward");
-    } else if (target - curPos < 0) {
-        stepper.step(-1);
-        curPos--;
+    } else if (target - curPos < -DISTANCE) {
+        stepper.step(-DISTANCE);
+        curPos -= DISTANCE;
         Serial.println("step backward");
     }
+}
+
+Stepper &StepperFront::getStepper() {
+    return stepper;
 }
