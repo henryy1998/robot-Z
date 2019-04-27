@@ -18,7 +18,7 @@
 #define DEBUG
 SoftwareSerial ble(BLE_TX, BLE_RX);
 int16_t params[5];
-ConcreteVehicle vehicle(APIN1, APIN2, ENA, BPIN1, BPIN2, ENB, SERVO_PIN);
+ConcreteVehicle vehicle(APIN1, APIN2, ENA, BPIN1, BPIN2, ENB, SERVO_PIN, <#initializer#>, <#initializer#>);
 
 void setup() {
     ble.begin(9600);

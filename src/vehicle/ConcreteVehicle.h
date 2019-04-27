@@ -15,7 +15,8 @@
 class ConcreteVehicle : public AbstractVehicle {
 public:
     ConcreteVehicle(uint8_t leftPin1, uint8_t leftPin2, uint8_t leftPinEna, uint8_t rightPin1,
-                    uint8_t rightPin2, uint8_t rightPinEna, uint8_t servoPin);
+                    uint8_t rightPin2, uint8_t rightPinEna, uint8_t servoPin, const Stepper &stepper1,
+                    const Stepper &stepper2);
 
 private:
     TenChangeCom left;

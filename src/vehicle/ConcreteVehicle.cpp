@@ -5,10 +5,11 @@
 #include "ConcreteVehicle.h"
 
 ConcreteVehicle::ConcreteVehicle(uint8_t leftPin1, uint8_t leftPin2, uint8_t leftPinEna, uint8_t rightPin1,
-                                 uint8_t rightPin2, uint8_t rightPinEna, uint8_t servoPin) :
+                                 uint8_t rightPin2, uint8_t rightPinEna, uint8_t servoPin, const Stepper &stepper1,
+                                 const Stepper &stepper2) :
         AbstractVehicle(leftPin1, leftPin2,
                         leftPinEna, rightPin1,
-                        rightPin2, rightPinEna, servoPin, Stepper(0, 0, 0), Stepper(0, 0, 0)),
+                        rightPin2, rightPinEna, servoPin, stepper1, stepper2),
         left(*this, "left", this->getLeftTen()),
         right(*this, "right", this->getRightTen()),
         leftMotorActivateCom(*this, "leftA", this->getLeftMotor(), this->getLeftTen(), this->getLeftMotorSpeed()),
