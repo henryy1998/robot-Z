@@ -10,6 +10,8 @@
 #include <vehicle/vehiclecommand/MotorActivateCom.h>
 #include <vehicle/vehiclecommand/TenDampCom.h>
 #include <vehicle/vehiclecommand/ServoControllCom.h>
+#include <vehicle/vehiclecommand/StepperAc.h>
+#include <vehicle/vehiclecommand/StepperST.h>
 #include "AbstractVehicle.h"
 
 class ConcreteVehicle : public AbstractVehicle {
@@ -24,6 +26,10 @@ private:
     MotorActivateCom leftMotorActivateCom;
     MotorActivateCom rightMotorActivateCom;
     ServoControllCom servoControllCom;
+    StepperAc stepperAc1;
+    StepperAc stepperAc2;
+    StepperST stepperSt1;
+    StepperST stepperSt2;
 };
 
 
