@@ -11,11 +11,13 @@
 #include "behavior/Command.h"
 #include "mechanism/Motor.h"
 #include <Stepper.h>
+#include <mechanism/StepperFront.h>
 
 class AbstractVehicle {
 public:
-    AbstractVehicle(uint8_t leftPin1, uint8_t leftPin2, uint8_t leftPinEna, uint8_t rightPin1, uint8_t rightPin2,
-                    uint8_t rightPinEna, uint8_t servoPin);
+    AbstractVehicle(uint8_t leftPin1, uint8_t leftPin2, uint8_t leftPinEna, uint8_t rightPin1,
+                    uint8_t rightPin2, uint8_t rightPinEna, uint8_t servoPin, Stepper stepper1,
+                    Stepper stepper2);
 
     void command(const String &command, const int16_t params[5]) {
         for (Command *command1:commands) {
@@ -58,6 +60,14 @@ public:
         return servo;
     }
 
+    StepperFront &getStepper1() {
+        return stepper1;
+    }
+
+    StepperFront &getStepper2() {
+        return stepper2;
+    }
+
 private:
     Command *commands[10]{};
     int16_t rightTen{0};
@@ -67,6 +77,8 @@ private:
     Motor leftMotor;
     Motor rightMotor;
     Servo servo;
+    StepperFront stepper1;
+    StepperFront stepper2;
 
 };
 

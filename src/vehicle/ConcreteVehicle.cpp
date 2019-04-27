@@ -8,7 +8,7 @@ ConcreteVehicle::ConcreteVehicle(uint8_t leftPin1, uint8_t leftPin2, uint8_t lef
                                  uint8_t rightPin2, uint8_t rightPinEna, uint8_t servoPin) :
         AbstractVehicle(leftPin1, leftPin2,
                         leftPinEna, rightPin1,
-                        rightPin2, rightPinEna, servoPin),
+                        rightPin2, rightPinEna, servoPin, Stepper(0, 0, 0), Stepper(0, 0, 0)),
         left(*this, "left", this->getLeftTen()),
         right(*this, "right", this->getRightTen()),
         leftMotorActivateCom(*this, "leftA", this->getLeftMotor(), this->getLeftTen(), this->getLeftMotorSpeed()),
