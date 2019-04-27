@@ -16,8 +16,10 @@ void StepperFront::activate() {
     if (target - curPos > 0) {
         stepper.step(1);
         curPos++;
+        Serial.println("step forward");
     } else if (target - curPos < 0) {
         stepper.step(-1);
         curPos--;
+        Serial.println("step backward");
     }
 }

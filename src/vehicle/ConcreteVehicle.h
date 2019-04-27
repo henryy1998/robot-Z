@@ -8,7 +8,6 @@
 
 #include <vehicle/vehiclecommand/TenChangeCom.h>
 #include <vehicle/vehiclecommand/MotorActivateCom.h>
-#include <vehicle/vehiclecommand/TenDampCom.h>
 #include <vehicle/vehiclecommand/ServoControllCom.h>
 #include <vehicle/vehiclecommand/StepperAc.h>
 #include <vehicle/vehiclecommand/StepperST.h>
