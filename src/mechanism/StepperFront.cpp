@@ -15,14 +15,19 @@ void StepperFront::setTarget(int16_t target) {
 }
 
 void StepperFront::activate() {
-    if (target - curPos > DISTANCE) {
+    int16_t distance = target - curPos;
+    if (distance > DISTANCE) {
         stepper.step(DISTANCE);
         curPos += DISTANCE;
         Serial.println("step forward");
-    } else if (target - curPos < -DISTANCE) {
+    } else if (distance < -DISTANCE) {
         stepper.step(-DISTANCE);
         curPos -= DISTANCE;
         Serial.println("step backward");
+    } else if (distance != 0) {
+        stepper.step(distance);
+        curPos = target;
+        Serial.println("step to the target");
     }
 }
 
