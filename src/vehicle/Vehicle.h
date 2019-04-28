@@ -17,8 +17,8 @@ public:
     void command(const String &identifier, const int16_t params[5]);
 
 private:
-    uint8_t index;
-    VehicleComt *vehicleComts[5];
+    uint8_t index{0};
+    VehicleComt *vehicleComts[10];
 
 };
 

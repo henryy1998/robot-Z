@@ -10,11 +10,13 @@
 
 class StepperFront {
 public:
-    StepperFront(Stepper stepper);
+    explicit StepperFront(Stepper stepper);
 
 public:
     void setTarget(int16_t target);
     void activate();
+
+    void setSpeed(long speed);
 
     Stepper &getStepper();
 private:

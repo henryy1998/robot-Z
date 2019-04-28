@@ -34,3 +34,7 @@ void StepperFront::activate() {
 Stepper &StepperFront::getStepper() {
     return stepper;
 }
+
+void StepperFront::setSpeed(long speed) {
+    stepper.setSpeed(speed);
+}

@@ -9,6 +9,6 @@ const String &Command::toString() {
     return identifier;
 }
 
-Command::Command(String const &identifier) : identifier(identifier) {
+Command::Command(const String &identifier) : identifier(identifier) {
 
 }

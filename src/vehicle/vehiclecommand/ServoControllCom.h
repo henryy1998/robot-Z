@@ -14,7 +14,7 @@ public:
     ServoControllCom(const String &identifier, Servo &servo);
 
 private:
-    virtual void execute(const int16_t *params);
+    void execute(const int16_t *params) override;
 
     Servo &servo;
 };

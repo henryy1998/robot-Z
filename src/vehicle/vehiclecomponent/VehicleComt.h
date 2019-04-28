@@ -19,7 +19,7 @@ protected:
     void attachCommand(VehicleCommand &vehicleCommand);
 
 private:
-    uint8_t index;
+    uint8_t index{0};
     VehicleCommand *commands[5];
 };
 
