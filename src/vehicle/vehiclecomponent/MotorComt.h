@@ -2,8 +2,8 @@
 // Created by fulva on 4/28/19.
 //
 
-#ifndef ROBOT_Z_MOTORCOM_H
-#define ROBOT_Z_MOTORCOM_H
+#ifndef ROBOT_Z_MOTORCOMT_H
+#define ROBOT_Z_MOTORCOMT_H
 
 
 #include <vehicle/vehiclecommand/TenChangeCom.h>
@@ -11,9 +11,9 @@
 #include "VehicleComt.h"
 #include <vehicle/vehiclecommand/MotorActivateCom.h>
 
-class MotorCom : public VehicleComt {
+class MotorComt : public VehicleComt {
 public:
-    MotorCom(uint8_t pin1, uint8_t pin2, uint8_t pinEna, const String &acIdent, const String &tenChaIdent);
+    MotorComt(uint8_t pin1, uint8_t pin2, uint8_t pinEna, const String &acIdent, const String &tenChaIdent);
 
 private:
     Motor motor;
@@ -25,4 +25,4 @@ private:
 };
 
 
-#endif //ROBOT_Z_MOTORCOM_H
+#endif //ROBOT_Z_MOTORCOMT_H

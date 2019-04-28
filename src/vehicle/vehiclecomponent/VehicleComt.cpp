@@ -16,3 +16,5 @@ void VehicleComt::attachCommand(VehicleCommand &vehicleCommand) {
     commands[index] = &vehicleCommand;
     index++;
 }
+
+VehicleComt::VehicleComt() : index(0) {}
