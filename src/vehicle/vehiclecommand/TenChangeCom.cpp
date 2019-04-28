@@ -4,11 +4,11 @@
 
 #include "TenChangeCom.h"
 
-TenChangeCom::TenChangeCom(AbstractVehicle &vehicle, const String &identifier, int16_t &ten) : VehicleCommand(vehicle,
-                                                                                                              identifier),
+TenChangeCom::TenChangeCom(AbstractVehicle &vehicle, const String &identifier, int16_t &ten) : VehicleCommand(
+        identifier),
                                                                                                ten(ten) {}
 
-void TenChangeCom::execute(AbstractVehicle &vehicle, const int16_t *params) {
+void TenChangeCom::execute(const int16_t *params) {
 #ifdef DEBUG
     Serial.print("params[0]:");
     Serial.println(params[0]);

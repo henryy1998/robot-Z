@@ -14,7 +14,7 @@ public:
     ServoControllCom(AbstractVehicle &vehicle, const String &identifier, Servo &servo);
 
 private:
-    virtual void execute(AbstractVehicle &vehicle, const int16_t *params);
+    virtual void execute(const int16_t *params);
 
     Servo &servo;
 };

@@ -8,12 +8,12 @@
 
 #define BLE_RX 4 //connect the pin with bluetooth rx pin
 #define BLE_TX 2 //connect the pin with bluetooth tx pin
-#define ENA 3 //connect to l298n ENA
-#define ENB 5 //connect to l298n ENB
-#define APIN1 7 //connect to l298n pin1
-#define APIN2 8 //connect to l298n pin2
-#define BPIN1 12 //connect to l298n pin3
-#define BPIN2 13 //connect to l298n pin4
+#define ENA 3 //connect to l298n ENA, connect to left motor
+#define ENB 5 //connect to l298n ENB, connect to right motor
+#define APIN1 7 //connect to l298n pin1, connect to left motor
+#define APIN2 8 //connect to l298n pin2, connect to left motor
+#define BPIN1 12 //connect to l298n pin3, connect to right motor
+#define BPIN2 13 //connect to l298n pin4, connect to right motor
 #define SERVO_PIN 9
 #define STEPPER1_PIN1 A0
 #define STEPPER1_PIN2 A1

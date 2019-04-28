@@ -15,7 +15,8 @@ public:
 private:
     StepperFront& stepper;
     uint8_t multi;
-    void execute(AbstractVehicle &vehicle, const int16_t *params) override;
+
+    void execute(const int16_t *params) override;
 
 };
 

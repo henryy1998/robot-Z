@@ -10,16 +10,8 @@
 
 class VehicleCommand : public Command {
 public:
-    VehicleCommand(AbstractVehicle &vehicle, const String &identifier) : vehicle(vehicle), Command(identifier) {
+    VehicleCommand(const String &identifier) : Command(identifier) {
     }
-
-    void execute(const int16_t *params) override;
-
-private:
-    virtual void execute(AbstractVehicle &vehicle, const int16_t *params) = 0;
-
-    AbstractVehicle &vehicle;
-
 };
 
 

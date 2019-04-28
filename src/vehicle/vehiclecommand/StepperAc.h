@@ -13,7 +13,7 @@ public:
     StepperAc(AbstractVehicle &vehicle, const String &identifier, StepperFront &stepper);
 
 private:
-    void execute(AbstractVehicle &vehicle, const int16_t *params) override;
+    void execute(const int16_t *params) override;
 
 private:
     StepperFront& stepper;

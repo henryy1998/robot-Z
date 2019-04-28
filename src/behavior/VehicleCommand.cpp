@@ -4,6 +4,3 @@
 
 #include "VehicleCommand.h"
 
-void VehicleCommand::execute(const int16_t *params) {
-    execute(vehicle, params);
-}

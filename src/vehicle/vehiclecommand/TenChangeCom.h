@@ -15,7 +15,7 @@ public:
 private:
     int16_t &ten;
 
-    void execute(AbstractVehicle &vehicle, const int16_t *params) override;
+    void execute(const int16_t *params) override;
 
 };
 
