@@ -4,7 +4,6 @@
 
 #include <Arduino.h>
 #include <SoftwareSerial.h>
-#include <vehicle/ConcreteVehicle.h>
 #include <vehicle/vehiclecomponent/MotorComt.h>
 #include <vehicle/vehiclecomponent/ServoComt.h>
 #include <vehicle/vehiclecomponent/StepperComt.h>
