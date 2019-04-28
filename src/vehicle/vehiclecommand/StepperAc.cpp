@@ -4,7 +4,7 @@
 
 #include "StepperAc.h"
 
-StepperAc::StepperAc(AbstractVehicle &vehicle, const String &identifier, StepperFront &stepper) : VehicleCommand(
+StepperAc::StepperAc(const String &identifier, StepperFront &stepper) : VehicleCommand(
         identifier), stepper(stepper) {}
 
 void StepperAc::execute(const int16_t *params) {

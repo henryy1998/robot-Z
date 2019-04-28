@@ -10,7 +10,7 @@
 
 class StepperAc: public VehicleCommand {
 public:
-    StepperAc(AbstractVehicle &vehicle, const String &identifier, StepperFront &stepper);
+    StepperAc(const String &identifier, StepperFront &stepper);
 
 private:
     void execute(const int16_t *params) override;

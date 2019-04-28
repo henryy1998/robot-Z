@@ -10,6 +10,6 @@ void ServoControllCom::execute(const int16_t *params) {
     Serial.println(params[0]);
 }
 
-ServoControllCom::ServoControllCom(AbstractVehicle &vehicle, const String &identifier, Servo &servo)
+ServoControllCom::ServoControllCom(const String &identifier, Servo &servo)
         : VehicleCommand(
         identifier), servo(servo) {}

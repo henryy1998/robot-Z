@@ -11,7 +11,7 @@
 
 class ServoControllCom : public VehicleCommand {
 public:
-    ServoControllCom(AbstractVehicle &vehicle, const String &identifier, Servo &servo);
+    ServoControllCom(const String &identifier, Servo &servo);
 
 private:
     virtual void execute(const int16_t *params);

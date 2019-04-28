@@ -10,8 +10,7 @@
 
 class MotorActivateCom : public VehicleCommand {
 public:
-    MotorActivateCom(AbstractVehicle &vehicle, const String &identifier, Motor &motor, const int16_t &target,
-                     int16_t &cSpeed);
+    MotorActivateCom(const String &identifier, Motor &motor, const int16_t &target, int16_t &cSpeed);
 
 private:
     void execute(const int16_t *params) override;

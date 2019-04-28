@@ -10,15 +10,15 @@ ConcreteVehicle::ConcreteVehicle(uint8_t leftPin1, uint8_t leftPin2, uint8_t lef
         AbstractVehicle(leftPin1, leftPin2,
                         leftPinEna, rightPin1,
                         rightPin2, rightPinEna, servoPin, stepper1, stepper2),
-        left(*this, "left", this->getLeftTen()),
-        right(*this, "right", this->getRightTen()),
-        leftMotorActivateCom(*this, "leftA", this->getLeftMotor(), this->getLeftTen(), this->getLeftMotorSpeed()),
-        rightMotorActivateCom(*this, "rightA", this->getRightMotor(), this->getRightTen(), this->getRightMotorSpeed()),
-        servoControllCom(*this, "servo1", this->getServo()),
-        stepperAc1(*this, "servo2a", getStepper1()),
-        stepperAc2(*this, "servo3a", getStepper2()),
-        stepperSt1(*this, "servo2", getStepper1(), 25),
-        stepperSt2(*this, "servo3", getStepper2(), 25) {
+        left("left", this->getLeftTen()),
+        right("right", this->getRightTen()),
+        leftMotorActivateCom("leftA", this->getLeftMotor(), this->getLeftTen(), this->getLeftMotorSpeed()),
+        rightMotorActivateCom("rightA", this->getRightMotor(), this->getRightTen(), this->getRightMotorSpeed()),
+        servoControllCom("servo1", this->getServo()),
+        stepperAc1("servo2a", getStepper1()),
+        stepperAc2("servo3a", getStepper2()),
+        stepperSt1("servo2", getStepper1(), 25),
+        stepperSt2("servo3", getStepper2(), 25) {
     Command **const commands = getCommands();
     commands[0] = &left;
     commands[1] = &right;
