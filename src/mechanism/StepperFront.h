@@ -7,11 +7,10 @@
 
 
 #include <Stepper.h>
-#include <AccelStepper.h>
 
 class StepperFront {
 public:
-    explicit StepperFront(AccelStepper stepper);
+    explicit StepperFront(Stepper stepper);
 
 public:
     void setTarget(int16_t target);
@@ -19,11 +18,11 @@ public:
 
     void setSpeed(long speed);
 
-    void setAccel(float accel);
-
-    AccelStepper &getStepper();
+    Stepper &getStepper();
 private:
-    AccelStepper stepper;
+    Stepper stepper;
+    int16_t curPos;
+    int16_t target;
 
 };
 
