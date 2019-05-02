@@ -8,5 +8,5 @@ StepperST::StepperST(const String &identifier, StepperFront &stepper, uint8_t mu
         : VehicleCommand(identifier), stepper(stepper), multi(multi) {}
 
 void StepperST::execute(const int16_t *params) {
-    stepper.setTarget((params[0] - 50) * multi);
+    stepper.setTarget((params[0]) * multi);
 }
