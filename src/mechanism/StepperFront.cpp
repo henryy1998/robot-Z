@@ -38,3 +38,8 @@ Stepper &StepperFront::getStepper() {
 void StepperFront::setSpeed(long speed) {
     stepper.setSpeed(speed);
 }
+
+void StepperFront::resetPos() {
+    curPos = 0;
+    target = 0;
+}

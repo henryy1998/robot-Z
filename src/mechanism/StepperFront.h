@@ -16,6 +16,8 @@ public:
     void setTarget(int16_t target);
     void activate();
 
+    void resetPos();
+
     void setSpeed(long speed);
 
     Stepper &getStepper();
