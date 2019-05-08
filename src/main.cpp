@@ -70,11 +70,11 @@ void loop() {
         Serial.println(c);
         vehicle.command(c, params);
     }
-//    if (millis() > 50 * buffer) {
-//        vehicle.command(LEFT_MOTOR_AC, nullptr);
-//        vehicle.command(RIGHT_MOTOR_AC, nullptr);
-//        buffer++;
-//    }
-//    vehicle.command("servo2a", nullptr);
-//    vehicle.command("servo3a", nullptr);
+    if (millis() > 50 * buffer) {
+        vehicle.command(LEFT_MOTOR_AC, nullptr);
+        vehicle.command(RIGHT_MOTOR_AC, nullptr);
+        buffer++;
+    }
+    vehicle.command("servo2a", nullptr);
+    vehicle.command("servo3a", nullptr);
 }
