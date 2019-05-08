@@ -10,11 +10,11 @@
 
 class StepperST : public VehicleCommand {
 public:
-    StepperST(const String &identifier, StepperFront &stepper, double multi);
+    StepperST(const String &identifier, StepperFront &stepper, uint8_t multi);
 
 private:
     StepperFront& stepper;
-    double multi;
+    uint8_t multi;
 
     void execute(const int16_t *params) override;
 

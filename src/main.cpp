@@ -38,9 +38,9 @@ MotorComt leftMotor(APIN1, APIN2, ENA, LEFT_MOTOR_AC, LEFT_MOTOR_SS);
 MotorComt rightMotor(BPIN1, BPIN2, ENB, RIGHT_MOTOR_AC, RIGHT_MOTOR_SS);
 ServoComt servoComt("servo1", SERVO_PIN);
 StepperComt stepperComt2(48, STEPPER1_PIN4, STEPPER1_PIN2, STEPPER1_PIN3, STEPPER1_PIN1, "servo2a", "servo2",
-                         "servo2r", 5.704, 500);
+                         "servo2r", 11, 500);
 StepperComt stepperComt3(48, STEPPER2_PIN4, STEPPER2_PIN2, STEPPER2_PIN3, STEPPER2_PIN1, "servo3a", "servo3",
-                         "servo3r", 5.704, 500);
+                         "servo3r", 11, 500);
 Vehicle vehicle;
 unsigned long buffer{0};
 
