@@ -5,10 +5,9 @@
 #include "ServoControllCom.h"
 
 void ServoControllCom::execute(const int16_t *params) {
-    int angle(params[0]);
-    servo.writeMicroseconds(map(angle, 0, 180, 500, 1500));
+    servo.write(params[0]);
     Serial.print("servo to:");
-    Serial.println(angle);
+    Serial.println(params[0]);
 }
 
 ServoControllCom::ServoControllCom(const String &identifier, Servo &servo)
