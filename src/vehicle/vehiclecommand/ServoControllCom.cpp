@@ -2,14 +2,15 @@
 // Created by fulva on 4/25/19.
 //
 
+#include <HardwareSerial.h>
 #include "ServoControllCom.h"
 
 void ServoControllCom::execute(const int16_t *params) {
-    servo.write(params[0]);
+    servoFront.setDest(static_cast<uint8_t>(params[0]));
     Serial.print("servo to:");
     Serial.println(params[0]);
 }
 
-ServoControllCom::ServoControllCom(const String &identifier, Servo &servo)
+ServoControllCom::ServoControllCom(const String &identifier, ServoFront &servoFront)
         : VehicleCommand(
-        identifier), servo(servo) {}
+        identifier), servoFront(servoFront) {}

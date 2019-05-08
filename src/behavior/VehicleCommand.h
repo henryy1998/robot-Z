@@ -6,7 +6,7 @@
 #define ROBOT_Z_VEHICLECOMMAND_H
 
 
-#include "vehicle/AbstractVehicle.h"
+#include "Command.h"
 
 class VehicleCommand : public Command {
 public:

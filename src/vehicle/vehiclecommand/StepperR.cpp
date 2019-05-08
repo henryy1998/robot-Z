@@ -2,6 +2,7 @@
 // Created by fulva on 5/2/19.
 //
 
+#include <mechanism/StepperFront.h>
 #include "StepperR.h"
 
 StepperR::StepperR(const String &identifier, StepperFront &stepper) : VehicleCommand(identifier), stepper(stepper) {}

@@ -7,6 +7,7 @@
 
 
 #include <Stepper.h>
+#include <stdint.h>
 
 class StepperFront {
 public:
@@ -14,6 +15,7 @@ public:
 
 public:
     void setTarget(int16_t target);
+
     void activate();
 
     void resetPos();
@@ -21,6 +23,7 @@ public:
     void setSpeed(long speed);
 
     Stepper &getStepper();
+
 private:
     Stepper stepper;
     int16_t curPos;

@@ -7,6 +7,7 @@
 
 
 #include <behavior/VehicleCommand.h>
+#include <mechanism/StepperFront.h>
 
 class StepperAc: public VehicleCommand {
 public:

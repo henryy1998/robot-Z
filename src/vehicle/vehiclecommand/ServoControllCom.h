@@ -6,17 +6,17 @@
 #define ROBOT_Z_SERVOCONTROLLCOM_H
 
 
-#include "../../behavior/VehicleCommand.h"
-#include "../AbstractVehicle.h"
+#include <mechanism/ServoFront.h>
+#include <behavior/VehicleCommand.h>
 
 class ServoControllCom : public VehicleCommand {
 public:
-    ServoControllCom(const String &identifier, Servo &servo);
+    ServoControllCom(const String &identifier, ServoFront &servoFront);
 
 private:
     void execute(const int16_t *params) override;
 
-    Servo &servo;
+    ServoFront &servoFront;
 };
 
 

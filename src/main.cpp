@@ -4,7 +4,6 @@
 
 #include <Arduino.h>
 #include <SoftwareSerial.h>
-#include <vehicle/ConcreteVehicle.h>
 #include <vehicle/vehiclecomponent/MotorComt.h>
 #include <vehicle/vehiclecomponent/ServoComt.h>
 #include <vehicle/vehiclecomponent/StepperComt.h>
@@ -34,6 +33,7 @@ const String LEFT_MOTOR_AC{"leftA"};
 const String RIGHT_MOTOR_AC{"rightA"};
 const String LEFT_MOTOR_SS{"left"};
 const String RIGHT_MOTOR_SS{"right"};
+const String SERVO_AC{"servo1A"};
 Vehicle vehicle;
 unsigned long buffer{0};
 
@@ -49,7 +49,7 @@ void setup() {
     StepperComt *stepperComt3 = new StepperComt(48, STEPPER2_PIN4, STEPPER2_PIN2, STEPPER2_PIN3, STEPPER2_PIN1,
                                                 "servo3a", "servo3",
                                                 "servo3r", 11, 500);
-    ServoComt *servoComt = new ServoComt("servo1", SERVO_PIN);
+    ServoComt *servoComt = new ServoComt("servo1", SERVO_AC, SERVO_PIN);
     vehicle.attachVehicleComt(*leftMotor);
     vehicle.attachVehicleComt(*rightMotor);
     vehicle.attachVehicleComt(*servoComt);
@@ -73,6 +73,7 @@ void loop() {
     if (millis() > 50 * buffer) {
         vehicle.command(LEFT_MOTOR_AC, nullptr);
         vehicle.command(RIGHT_MOTOR_AC, nullptr);
+        vehicle.command(SERVO_AC, nullptr);
         buffer++;
     }
     vehicle.command("servo2a", nullptr);

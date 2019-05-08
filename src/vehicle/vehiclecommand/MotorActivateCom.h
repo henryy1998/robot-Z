@@ -7,6 +7,7 @@
 
 
 #include <behavior/VehicleCommand.h>
+#include <mechanism/Motor.h>
 
 class MotorActivateCom : public VehicleCommand {
 public:
