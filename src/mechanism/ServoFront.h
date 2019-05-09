@@ -23,6 +23,7 @@ public:
 private:
     Servo servo;
     uint16_t destAngle{0};
+    unsigned long lastTimeAc{0};
 
 };
 
