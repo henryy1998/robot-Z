@@ -6,6 +6,8 @@
 #include <HID.h>
 #include "ServoFront.h"
 
+#define DEBUG
+
 #define TOLERANCE 3
 #define SPEED 40
 
@@ -37,6 +39,11 @@ void ServoFront::activate() {
     } else {
         if (servo.attached()) {
             servo.detach();
+#ifdef DEBUG
+            Serial.println("detached");
+            Serial.println();
+#endif
+
         }
     }
 }

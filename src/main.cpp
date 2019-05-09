@@ -26,7 +26,7 @@
 #define STEPPER2_PIN2 A5
 #define STEPPER2_PIN3 10
 #define STEPPER2_PIN4 9
-#define DEBUG
+//#define DEBUG
 SoftwareSerial ble(BLE_TX, BLE_RX);
 int16_t params[5];
 const String LEFT_MOTOR_AC{"leftA"};
@@ -67,16 +67,25 @@ void loop() {
             next = ble.read();
             index += 1;
         }
+        c[index] = '\0';
         if (next == ';') {
             String command{c};
+#ifdef DEBUG
+            Serial.println(c);
+            Serial.println(command);
+#endif
             uint8_t count(0);
             int i;
             while ((i = command.lastIndexOf(":")) != -1) {
                 params[count++] = command.substring(i + 1).toInt();
+#ifdef DEBUG
                 Serial.println(command.substring(i + 1));
+#endif
                 command = command.substring(0, i);
             }
+#ifdef DEBUG
             Serial.println(command);
+#endif
             vehicle.command(command, params);
         }
 
