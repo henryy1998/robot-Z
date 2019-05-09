@@ -6,8 +6,8 @@
 #include <HID.h>
 #include "ServoFront.h"
 
-#define TOLERANCE 5
-#define SPEED 5
+#define TOLERANCE 0
+#define SPEED 20
 
 ServoFront::ServoFront(uint8_t pin, uint16_t minPulse = MIN_PULSE_WIDTH,
                        uint16_t maxPulse = MAX_PULSE_WIDTH) { servo.attach(pin, minPulse, maxPulse); }
@@ -18,7 +18,7 @@ void ServoFront::activate() {
     if (abs(distance) > TOLERANCE) {
         const unsigned long currentTime = millis();
         int step = SPEED * (currentTime - lastTimeAc) / 1000 * (distance > 0 ? 1 : -1);
-        if (step > 0) {
+        if (step != 0) {
             lastTimeAc = currentTime;
             servo.write(currentPos + step);
         }
