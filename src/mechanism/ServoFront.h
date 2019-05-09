@@ -21,6 +21,9 @@ public:
     const Servo &getServo();
 
 private:
+    const uint8_t pin;
+    const uint16_t mini;
+    const uint16_t maxi;
     Servo servo;
     uint8_t destAngle{90};
     unsigned long lastTimeAc{0};

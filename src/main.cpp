@@ -59,16 +59,28 @@ void setup() {
 
 void loop() {
     while (ble.available()) {
-        String c = ble.readStringUntil(';');
-        uint8_t count(0);
-        int i;
-        while ((i = c.lastIndexOf(":")) != -1) {
-            params[count++] = c.substring(i + 1).toInt();
-            Serial.println(c.substring(i + 1));
-            c = c.substring(0, i);
+        char c[20];
+        uint8_t index(0);
+        char next = ble.read();
+        while (next != -1 && next != ';' && index < 20 - 1) {
+            c[index] = next;
+            next = ble.read();
+            index += 1;
         }
-        Serial.println(c);
-        vehicle.command(c, params);
+        if (next == ';') {
+            String command{c};
+            uint8_t count(0);
+            int i;
+            while ((i = command.lastIndexOf(":")) != -1) {
+                params[count++] = command.substring(i + 1).toInt();
+                Serial.println(command.substring(i + 1));
+                command = command.substring(0, i);
+            }
+            Serial.println(command);
+            vehicle.command(command, params);
+        }
+
+
     }
     if (millis() > 50 * buffer) {
         vehicle.command(LEFT_MOTOR_AC, nullptr);

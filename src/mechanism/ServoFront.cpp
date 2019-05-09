@@ -6,11 +6,11 @@
 #include <HID.h>
 #include "ServoFront.h"
 
-#define TOLERANCE 10
-#define SPEED 20
+#define TOLERANCE 3
+#define SPEED 40
 
 ServoFront::ServoFront(uint8_t pin, uint16_t minPulse = MIN_PULSE_WIDTH,
-                       uint16_t maxPulse = MAX_PULSE_WIDTH) { servo.attach(pin, minPulse, maxPulse); }
+                       uint16_t maxPulse = MAX_PULSE_WIDTH) : pin(pin), mini(minPulse), maxi(maxPulse) {}
 
 void ServoFront::activate() {
     const int currentPos = servo.read();
@@ -20,6 +20,9 @@ void ServoFront::activate() {
     Serial.println(destAngle);
     int distance = destAngle - currentPos;
     if (abs(distance) > TOLERANCE) {
+        if (!servo.attached()) {
+            servo.attach(pin, mini, maxi);
+        }
         const unsigned long currentTime = millis();
         int step = SPEED * (currentTime - lastTimeAc) / 1000 * (distance > 0 ? 1 : -1);
         if (abs(step) > abs(distance)) {
@@ -31,12 +34,14 @@ void ServoFront::activate() {
             Serial.println(currentPos + step);
             servo.write(currentPos + step);
         }
+    } else {
+        if (servo.attached()) {
+            servo.detach();
+        }
     }
 }
 
 void ServoFront::setDest(uint8_t destAngle) {
-    Serial.print("set destAngle to:");
-    Serial.println(destAngle);
     this->destAngle = destAngle;
 }
 
@@ -45,7 +50,5 @@ const Servo &ServoFront::getServo() {
 }
 
 ServoFront::ServoFront(uint8_t
-                       pin) {
-    servo.attach(pin);
-
+                       pin) : pin(pin), mini(MIN_PULSE_WIDTH), maxi(MAX_PULSE_WIDTH) {
 }
