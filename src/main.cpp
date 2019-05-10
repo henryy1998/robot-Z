@@ -45,10 +45,10 @@ void setup() {
     MotorComt *rightMotor = new MotorComt(BPIN1, BPIN2, ENB, RIGHT_MOTOR_AC, RIGHT_MOTOR_SS);
     StepperComt *stepperComt2 = new StepperComt(48, STEPPER1_PIN4, STEPPER1_PIN2, STEPPER1_PIN3, STEPPER1_PIN1,
                                                 "servo2a", "servo2",
-                                                "servo2r", 11, 500);
+                                                "servo2r", 5.704, 500);
     StepperComt *stepperComt3 = new StepperComt(48, STEPPER2_PIN4, STEPPER2_PIN2, STEPPER2_PIN3, STEPPER2_PIN1,
                                                 "servo3a", "servo3",
-                                                "servo3r", 11, 500);
+                                                "servo3r", 5.704, 500);
     ServoComt *servoComt = new ServoComt("servo1", SERVO_AC, SERVO_PIN);
     vehicle.attachVehicleComt(*leftMotor);
     vehicle.attachVehicleComt(*rightMotor);
