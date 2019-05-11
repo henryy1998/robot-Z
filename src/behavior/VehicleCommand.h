@@ -10,7 +10,7 @@
 
 class VehicleCommand : public Command {
 public:
-    explicit VehicleCommand(const String &identifier) : Command(identifier) {
+    explicit VehicleCommand(CommandRegistry ident) : Command(ident) {
     }
 };
 

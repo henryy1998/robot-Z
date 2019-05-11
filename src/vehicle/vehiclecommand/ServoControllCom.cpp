@@ -11,6 +11,6 @@ void ServoControllCom::execute(const int16_t *params) {
     Serial.println(params[0]);
 }
 
-ServoControllCom::ServoControllCom(const String &identifier, ServoFront &servoFront)
+ServoControllCom::ServoControllCom(CommandRegistry ident, ServoFront &servoFront)
         : VehicleCommand(
-        identifier), servoFront(servoFront) {}
+        ident), servoFront(servoFront) {}

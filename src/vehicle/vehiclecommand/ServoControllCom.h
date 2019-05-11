@@ -11,7 +11,7 @@
 
 class ServoControllCom : public VehicleCommand {
 public:
-    ServoControllCom(const String &identifier, ServoFront &servoFront);
+    ServoControllCom(CommandRegistry ident, ServoFront &servoFront);
 
 private:
     void execute(const int16_t *params) override;

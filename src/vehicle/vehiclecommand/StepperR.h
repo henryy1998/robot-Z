@@ -10,7 +10,7 @@
 
 class StepperR : public VehicleCommand {
 public:
-    StepperR(const String &identifier, StepperFront &stepper);
+    StepperR(CommandRegistry ident, StepperFront &stepper);
 
     void execute(const int16_t *params) override;
 

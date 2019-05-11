@@ -11,7 +11,7 @@ void Vehicle::attachVehicleComt(VehicleComt &vehicleComt) {
     index++;
 }
 
-void Vehicle::command(const String &identifier, const int16_t *params) {
+void Vehicle::command(CommandRegistry identifier, const int16_t *params) {
     for (uint8_t i(0); i < index; i++) {
         vehicleComts[i]->command(identifier, params);
     }

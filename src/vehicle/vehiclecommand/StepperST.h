@@ -11,7 +11,7 @@
 
 class StepperST : public VehicleCommand {
 public:
-    StepperST(const String &identifier, StepperFront &stepper, double multi);
+    StepperST(CommandRegistry ident, StepperFront &stepper, double multi);
 
 private:
     StepperFront& stepper;

@@ -4,8 +4,8 @@
 
 #include "StepperAc.h"
 
-StepperAc::StepperAc(const String &identifier, StepperFront &stepper) : VehicleCommand(
-        identifier), stepper(stepper) {}
+StepperAc::StepperAc(CommandRegistry ident, StepperFront &stepper) : VehicleCommand(
+        ident), stepper(stepper) {}
 
 void StepperAc::execute(const int16_t *params) {
     stepper.activate();

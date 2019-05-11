@@ -13,7 +13,7 @@
 
 class MotorComt : public VehicleComt {
 public:
-    MotorComt(uint8_t pin1, uint8_t pin2, uint8_t pinEna, const String &acIdent, const String &tenChaIdent);
+    MotorComt(uint8_t pin1, uint8_t pin2, uint8_t pinEna, CommandRegistry acIdent, CommandRegistry tenChaIdent);
 
 private:
     Motor motor;

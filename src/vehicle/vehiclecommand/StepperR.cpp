@@ -5,7 +5,7 @@
 #include <mechanism/StepperFront.h>
 #include "StepperR.h"
 
-StepperR::StepperR(const String &identifier, StepperFront &stepper) : VehicleCommand(identifier), stepper(stepper) {}
+StepperR::StepperR(CommandRegistry ident, StepperFront &stepper) : VehicleCommand(ident), stepper(stepper) {}
 
 void StepperR::execute(const int16_t *params) {
     stepper.resetPos();

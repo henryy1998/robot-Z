@@ -10,7 +10,7 @@
 
 class TenChangeCom : public VehicleCommand {
 public:
-    TenChangeCom(const String &identifier, int16_t &ten);
+    TenChangeCom(CommandRegistry ident, int16_t &ten);
 
 private:
     int16_t &ten;

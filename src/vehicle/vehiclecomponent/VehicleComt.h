@@ -13,7 +13,7 @@ class VehicleComt {
 public:
     VehicleComt();
 
-    void command(const String &identifier, const int16_t params[5]);
+    void command(CommandRegistry identifier, const int16_t params[5]);
 
 protected:
     void attachCommand(VehicleCommand &vehicleCommand);

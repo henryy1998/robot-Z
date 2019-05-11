@@ -11,7 +11,7 @@
 
 class StepperAc: public VehicleCommand {
 public:
-    StepperAc(const String &identifier, StepperFront &stepper);
+    StepperAc(CommandRegistry ident, StepperFront &stepper);
 
 private:
     void execute(const int16_t *params) override;

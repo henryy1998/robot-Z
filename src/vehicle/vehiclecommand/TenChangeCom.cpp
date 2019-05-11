@@ -4,9 +4,9 @@
 
 #include "TenChangeCom.h"
 
-TenChangeCom::TenChangeCom(const String &identifier, int16_t &ten) : VehicleCommand(
-        identifier),
-                                                                     ten(ten) {}
+TenChangeCom::TenChangeCom(CommandRegistry ident, int16_t &ten) : VehicleCommand(
+        ident),
+                                                                  ten(ten) {}
 
 void TenChangeCom::execute(const int16_t *params) {
 #ifdef DEBUG

@@ -5,10 +5,10 @@
 #include "Command.h"
 
 
-const String &Command::toString() {
+const CommandRegistry Command::getIdent() {
     return identifier;
 }
 
-Command::Command(const String &identifier) : identifier(identifier) {
+Command::Command(CommandRegistry ident) : identifier(ident) {
 
 }

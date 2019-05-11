@@ -6,8 +6,8 @@
 
 const static double damping = 0.3;
 
-MotorActivateCom::MotorActivateCom(const String &identifier, Motor &motor, const int16_t &target, int16_t &cSpeed) :
-        VehicleCommand(identifier),
+MotorActivateCom::MotorActivateCom(CommandRegistry ident, Motor &motor, const int16_t &target, int16_t &cSpeed) :
+        VehicleCommand(ident),
         motor(motor),
         target(target),
         cSpeed(cSpeed) {}

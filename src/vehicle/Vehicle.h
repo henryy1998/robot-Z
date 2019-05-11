@@ -14,7 +14,7 @@ public:
 
     void attachVehicleComt(VehicleComt &vehicleComt);
 
-    void command(const String &identifier, const int16_t params[5]);
+    void command(CommandRegistry identifier, const int16_t params[5]);
 
 private:
     uint8_t index{0};

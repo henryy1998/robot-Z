@@ -5,7 +5,7 @@
 #include "BufferDecor.h"
 
 BufferDecor::BufferDecor(VehicleCommand &decorant, uint16_t bufferTime) : VehicleCommand(
-        decorant.toString()), decorant(decorant), bufferTime(bufferTime) {}
+        decorant.getIdent()), decorant(decorant), bufferTime(bufferTime) {}
 
 void BufferDecor::execute(const int16_t *params) {
     unsigned long curTime;

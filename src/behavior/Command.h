@@ -7,17 +7,18 @@
 
 
 #include <WString.h>
+#include <CommandRegistry.h>
 
 class Command {
 public:
-    explicit Command(const String &identifier);
+    explicit Command(CommandRegistry ident);
 
-    const String &toString();
+    const CommandRegistry getIdent();
 
     virtual void execute(const int16_t params[5]) = 0;
 
 private:
-    String identifier;
+    CommandRegistry identifier;
 };
 
 

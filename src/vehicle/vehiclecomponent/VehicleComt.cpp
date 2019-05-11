@@ -4,9 +4,9 @@
 
 #include "VehicleComt.h"
 
-void VehicleComt::command(const String &identifier, const int16_t *params) {
+void VehicleComt::command(CommandRegistry identifier, const int16_t *params) {
     for (uint8_t i(0); i < index; i++) {
-        if (commands[i]->toString() == identifier) {
+        if (commands[i]->getIdent() == identifier) {
             commands[i]->execute(params);
         }
     }

@@ -11,7 +11,7 @@
 
 class ServoAc : public VehicleCommand {
 public:
-    ServoAc(const String &identifier, ServoFront &servoFront);
+    ServoAc(CommandRegistry ident, ServoFront &servoFront);
 
     void execute(const int16_t *params) override;
 

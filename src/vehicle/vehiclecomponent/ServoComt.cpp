@@ -4,7 +4,7 @@
 
 #include "ServoComt.h"
 
-ServoComt::ServoComt(const String &servoComIdent, const String &servoAcIdent, uint8_t pin, uint8_t defaultAngle)
+ServoComt::ServoComt(CommandRegistry servoComIdent, CommandRegistry servoAcIdent, uint8_t pin, uint8_t defaultAngle)
         : servoCom(servoComIdent,
                    servoFront),
           servoAc(servoAcIdent,

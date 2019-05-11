@@ -4,8 +4,8 @@
 
 #include "StepperST.h"
 
-StepperST::StepperST(const String &identifier, StepperFront &stepper, double multi)
-        : VehicleCommand(identifier), stepper(stepper), multi(multi) {}
+StepperST::StepperST(CommandRegistry ident, StepperFront &stepper, double multi)
+        : VehicleCommand(ident), stepper(stepper), multi(multi) {}
 
 void StepperST::execute(const int16_t *params) {
     stepper.setTarget((params[0]) * multi);
