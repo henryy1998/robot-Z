@@ -8,11 +8,14 @@
 
 #define DEBUG
 
-#define TOLERANCE 3
+#define TOLERANCE 6
 #define SPEED 40
+#define DISTANCE_FACTOR 1
 
 ServoFront::ServoFront(uint8_t pin, uint16_t minPulse = MIN_PULSE_WIDTH,
-                       uint16_t maxPulse = MAX_PULSE_WIDTH) : pin(pin), mini(minPulse), maxi(maxPulse) {}
+                       uint16_t maxPulse = MAX_PULSE_WIDTH) : pin(pin), mini(minPulse), maxi(maxPulse) {
+    servo.attach(pin);
+}
 
 void ServoFront::activate() {
     const int currentPos = servo.read();
@@ -30,7 +33,8 @@ void ServoFront::activate() {
                 servo.attach(pin, mini, maxi);
             }
             const unsigned long currentTime = millis();
-            int step = SPEED * (currentTime - lastTimeAc) / 1000 * (distance > 0 ? 1 : -1);
+            int step = min(SPEED, abs(distance) * DISTANCE_FACTOR) * (currentTime - lastTimeAc) / 1000 *
+                       (distance > 0 ? 1 : -1);
             if (abs(step) > abs(distance)) {
                 step = distance;
             }
@@ -64,5 +68,6 @@ const Servo &ServoFront::getServo() {
 }
 
 ServoFront::ServoFront(uint8_t
-                       pin) : pin(pin), mini(MIN_PULSE_WIDTH), maxi(MAX_PULSE_WIDTH) {
+                       pin) : ServoFront(pin, MIN_PULSE_WIDTH, MAX_PULSE_WIDTH) {
+
 }
