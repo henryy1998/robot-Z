@@ -32,28 +32,6 @@ struct CommandNode {
     CommandNode(CommandRegistry command, const String &ident) : command(command), ident(ident) {}
 };
 
-CommandNode commands[]{
-        {CommandRegistry::LEFT_MOTOR_AC,  "leftA"},
-        {CommandRegistry::LEFT_MOTOR_SS,  "left"},
-        {CommandRegistry::RIGHT_MOTOR_AC, "rightA"},
-        {CommandRegistry::RIGHT_MOTOR_SS, "right"},
-        {CommandRegistry::SERVO1A,        "servo1a"},
-        {CommandRegistry::SERVO1SS,       "servo1"},
-        {CommandRegistry::SERVO2A,        "servo2a"},
-        {CommandRegistry::SERVO2_SS,      "servo2"},
-        {CommandRegistry::SERVO2_RESET,   "servo2r"},
-        {CommandRegistry::SERVO3A,        "servo3a"},
-        {CommandRegistry::SERVO3_SS,      "servo3"},
-        {CommandRegistry::SERVO3_RESET,   "servo3r"}
-};
 
-CommandRegistry resolveCommand(const String &ident) {
-    CommandRegistry command{CommandRegistry::NULLCOMMAND};
-    for (CommandNode aCom:commands) {
-        if (aCom.ident == ident) {
-            return aCom.command;
-        }
-    }
-}
 
 #endif //ROBOT_Z_COMMANDREGISTRY_H

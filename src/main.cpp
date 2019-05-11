@@ -20,6 +20,21 @@ const String SERVO_AC{"servo1A"};
 Vehicle vehicle;
 unsigned long buffer{0};
 
+CommandNode commandEnum[12]{
+        {CommandRegistry::LEFT_MOTOR_AC,  "leftA"},
+        {CommandRegistry::LEFT_MOTOR_SS,  "left"},
+        {CommandRegistry::RIGHT_MOTOR_AC, "rightA"},
+        {CommandRegistry::RIGHT_MOTOR_SS, "right"},
+        {CommandRegistry::SERVO1A,        "servo1a"},
+        {CommandRegistry::SERVO1SS,       "servo1"},
+        {CommandRegistry::SERVO2A,        "servo2a"},
+        {CommandRegistry::SERVO2_SS,      "servo2"},
+        {CommandRegistry::SERVO2_RESET,   "servo2r"},
+        {CommandRegistry::SERVO3A,        "servo3a"},
+        {CommandRegistry::SERVO3_SS,      "servo3"},
+        {CommandRegistry::SERVO3_RESET,   "servo3r"}
+};
+
 
 void setup() {
     ble.begin(9600);
@@ -40,6 +55,15 @@ void setup() {
     vehicle.attachVehicleComt(*servoComt);
     vehicle.attachVehicleComt(*stepperComt2);
     vehicle.attachVehicleComt(*stepperComt3);
+}
+
+CommandRegistry resolveCommand(const String &ident) {
+    for (const CommandNode &aCom:commandEnum) {
+        if (aCom.ident == ident) {
+            return aCom.command;
+        }
+    }
+    return CommandRegistry::NULLCOMMAND;
 }
 
 void loop() {
