@@ -13,7 +13,7 @@
 
 class ServoComt : public VehicleComt {
 public:
-    ServoComt(const String &servoComIdent, const String &servoAcIdent, uint8_t pin);
+    ServoComt(const String &servoComIdent, const String &servoAcIdent, uint8_t pin, uint8_t defaultAngle);
 
 private:
     ServoFront servoFront;

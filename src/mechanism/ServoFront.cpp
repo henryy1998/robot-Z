@@ -8,53 +8,33 @@
 
 #define DEBUG
 
-#define TOLERANCE 6
+#define TOLERANCE 10
 #define SPEED 40
 #define DISTANCE_FACTOR 1
+#define STEP 10
 
-ServoFront::ServoFront(uint8_t pin, uint16_t minPulse = MIN_PULSE_WIDTH,
+ServoFront::ServoFront(uint8_t defalutAngle, uint8_t pin, uint16_t minPulse = MIN_PULSE_WIDTH,
                        uint16_t maxPulse = MAX_PULSE_WIDTH) : pin(pin), mini(minPulse), maxi(maxPulse) {
     servo.attach(pin);
+    servo.write(defalutAngle);
 }
 
 void ServoFront::activate() {
-    const int currentPos = servo.read();
     Serial.print("servo location is:");
     Serial.println(currentPos);
     Serial.print("servo destAngle is:");
     Serial.println(destAngle);
     int distance = destAngle - currentPos;
     if (abs(distance) > TOLERANCE) {
-        if (arrival) {
-            arrival = false;
-            lastTimeAc = millis();
-        } else {
-            if (!servo.attached()) {
-                servo.attach(pin, mini, maxi);
-            }
-            const unsigned long currentTime = millis();
-            int step = min(SPEED, abs(distance) * DISTANCE_FACTOR) * (currentTime - lastTimeAc) / 1000 *
-                       (distance > 0 ? 1 : -1);
-            if (abs(step) > abs(distance)) {
-                step = distance;
-            }
-            if (step != 0) {
-                lastTimeAc = currentTime;
-                Serial.print("servo go to :");
-                Serial.println(currentPos + step);
-                servo.write(currentPos + step);
-            }
+        servo.attach(pin);
+        while (abs(distance) > TOLERANCE) {
+            currentPos = servo.read();
+            servo.write(distance > 0 ? STEP + currentPos : -STEP + currentPos);
+            delay(200);
+            currentPos = servo.read();
+            distance = destAngle - currentPos;
         }
-    } else {
-        if (servo.attached()) {
-            servo.detach();
-        }
-        if (!arrival) { arrival = true; }
-#ifdef DEBUG
-        Serial.println("detached");
-        Serial.println();
-#endif
-
+        servo.detach();
     }
 }
 
@@ -67,7 +47,7 @@ const Servo &ServoFront::getServo() {
     return servo;
 }
 
-ServoFront::ServoFront(uint8_t
-                       pin) : ServoFront(pin, MIN_PULSE_WIDTH, MAX_PULSE_WIDTH) {
+ServoFront::ServoFront(uint8_t pin, uint8_t defalutAngle) : ServoFront(
+        defalutAngle, pin, MIN_PULSE_WIDTH, MAX_PULSE_WIDTH) {
 
 }

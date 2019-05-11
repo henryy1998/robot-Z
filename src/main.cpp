@@ -34,7 +34,7 @@ void setup() {
     StepperComt *stepperComt3 = new StepperComt(48, STEPPER2_PIN4, STEPPER2_PIN2, STEPPER2_PIN3, STEPPER2_PIN1,
                                                 "servo3a", "servo3",
                                                 "servo3r", 5.704, 500);
-    ServoComt *servoComt = new ServoComt("servo1", SERVO_AC, SERVO_PIN);
+    ServoComt *servoComt = new ServoComt("servo1", SERVO_AC, SERVO_PIN, 130);
     vehicle.attachVehicleComt(*leftMotor);
     vehicle.attachVehicleComt(*rightMotor);
     vehicle.attachVehicleComt(*servoComt);

@@ -10,9 +10,9 @@
 
 class ServoFront {
 public:
-    ServoFront(uint8_t pin, uint16_t minPulse, uint16_t maxPulse);
+    ServoFront(uint8_t defalutAngle, uint8_t pin, uint16_t minPulse, uint16_t maxPulse);
 
-    ServoFront(uint8_t pin);
+    ServoFront(uint8_t pin, uint8_t defalutAngle);
 
     void activate();
 
@@ -29,6 +29,7 @@ private:
     uint8_t destAngle{90};
     unsigned long lastTimeAc{0};
 
+    int currentPos{90};
 };
 
 
