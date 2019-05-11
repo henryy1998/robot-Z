@@ -8,10 +8,10 @@
 
 #define DEBUG
 
-#define TOLERANCE 10
+#define TOLERANCE 3
 #define SPEED 40
 #define DISTANCE_FACTOR 1
-#define STEP 10
+#define STEP 2
 
 ServoFront::ServoFront(uint8_t defalutAngle, uint8_t pin, uint16_t minPulse = MIN_PULSE_WIDTH,
                        uint16_t maxPulse = MAX_PULSE_WIDTH) : pin(pin), mini(minPulse), maxi(maxPulse) {
@@ -30,7 +30,7 @@ void ServoFront::activate() {
         while (abs(distance) > TOLERANCE) {
             currentPos = servo.read();
             servo.write(distance > 0 ? STEP + currentPos : -STEP + currentPos);
-            delay(200);
+            delay(10);
             currentPos = servo.read();
             distance = destAngle - currentPos;
         }
