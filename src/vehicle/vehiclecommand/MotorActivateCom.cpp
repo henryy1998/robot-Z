@@ -3,6 +3,7 @@
 //
 
 #include "MotorActivateCom.h"
+//#define DEBUG
 
 const static double damping = 0.3;
 

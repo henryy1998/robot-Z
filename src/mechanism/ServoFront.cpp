@@ -43,6 +43,10 @@ void ServoFront::activate() {
 
 void ServoFront::setDest(uint8_t destAngle) {
     this->destAngle = destAngle;
+#ifdef DEBUG
+    Serial.print("change dest to");
+    Serial.println(destAngle);
+#endif
 }
 
 const Servo &ServoFront::getServo() {

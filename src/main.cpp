@@ -14,9 +14,6 @@
 //#define DEBUG
 SoftwareSerial ble(BLE_TX, BLE_RX);
 int16_t params[5];
-const String RIGHT_MOTOR_AC{"rightA"};
-const String LEFT_MOTOTOR_SS{"right"};
-const String SERVO_AC{"servo1A"};
 Vehicle vehicle;
 unsigned long buffer{0};
 
@@ -67,18 +64,19 @@ CommandRegistry resolveCommand(const String &ident) {
 }
 
 void loop() {
-    while (ble.available()) {
+    while (ble.available() > 0) {
         char c[20];
         uint8_t index(0);
         char next = ble.read();
-        while (next != -1 && next != ';' && index < 20 - 1) {
+        while (next != ';' && index < 20 - 1) {
             c[index] = next;
+            while (ble.available() == 0) {}
             next = ble.read();
             index += 1;
         }
         c[index] = '\0';
         if (next == ';') {
-            String command{c};
+            String command(c);
 #ifdef DEBUG
             Serial.println(c);
             Serial.println(command);
@@ -104,6 +102,10 @@ void loop() {
         vehicle.command(CommandRegistry::LEFT_MOTOR_AC, nullptr);
         vehicle.command(CommandRegistry::RIGHT_MOTOR_AC, nullptr);
         vehicle.command(CommandRegistry::SERVO1A, nullptr);
+#ifdef DEBUG
+        Serial.print("cycle:");
+        Serial.println(buffer);
+#endif
         buffer++;
     }
     vehicle.command(CommandRegistry::SERVO2A, nullptr);
