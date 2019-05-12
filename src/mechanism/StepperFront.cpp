@@ -19,15 +19,21 @@ void StepperFront::activate() {
     if (distance > DISTANCE) {
         stepper.step(DISTANCE);
         curPos += DISTANCE;
+#ifdef DEBUG
         Serial.println("step forward");
+#endif
     } else if (distance < -DISTANCE) {
         stepper.step(-DISTANCE);
         curPos -= DISTANCE;
+#ifdef DEBUG
         Serial.println("step backward");
+#endif
     } else if (distance != 0) {
         stepper.step(distance);
         curPos = target;
+#ifdef DEBUG
         Serial.println("step to the target");
+#endif
     }
 }
 

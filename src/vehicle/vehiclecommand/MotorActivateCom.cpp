@@ -16,6 +16,8 @@ void MotorActivateCom::execute(const int16_t *params) {
     double cre = damping * (target - cSpeed);
     cSpeed = cre + cSpeed;
     motor.drive(cSpeed);
+#ifdef DEBUG
     Serial.print("drive motor run at speed :");
     Serial.println(cSpeed);
+#endif
 }

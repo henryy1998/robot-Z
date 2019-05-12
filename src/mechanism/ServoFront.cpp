@@ -6,7 +6,7 @@
 #include <HID.h>
 #include "ServoFront.h"
 
-#define DEBUG
+//#define DEBUG
 
 #define TOLERANCE 3
 #define SPEED 40
@@ -20,10 +20,12 @@ ServoFront::ServoFront(uint8_t defalutAngle, uint8_t pin, uint16_t minPulse = MI
 }
 
 void ServoFront::activate() {
+#ifdef DEBUG
     Serial.print("servo location is:");
     Serial.println(currentPos);
     Serial.print("servo destAngle is:");
     Serial.println(destAngle);
+#endif
     int distance = destAngle - currentPos;
     if (abs(distance) > TOLERANCE) {
         servo.attach(pin);
