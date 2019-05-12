@@ -11,7 +11,7 @@
 #include "PinConfig.h"
 
 
-//#define DEBUG
+#define DEBUG
 SoftwareSerial ble(BLE_TX, BLE_RX);
 int16_t params[5];
 Vehicle vehicle;
@@ -65,17 +65,17 @@ CommandRegistry resolveCommand(const String &ident) {
 
 void loop() {
     while (ble.available() > 0) {
-        char c[20];
-        uint8_t index(0);
+        static char c[20];
+        static uint8_t index(0);
         char next = ble.read();
-        while (next != ';' && index < 20 - 1) {
+        while (next != -1 && next != ';' && index < 20 - 1) {
             c[index] = next;
-            while (ble.available() == 0) {}
             next = ble.read();
             index += 1;
         }
         c[index] = '\0';
         if (next == ';') {
+            index = 0;
             String command(c);
 #ifdef DEBUG
             Serial.println(c);
