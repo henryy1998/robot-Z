@@ -11,7 +11,7 @@
 #include "PinConfig.h"
 
 
-#define DEBUG
+//#define DEBUG
 SoftwareSerial ble(BLE_TX, BLE_RX);
 int16_t params[5];
 Vehicle vehicle;
@@ -36,17 +36,17 @@ CommandNode commandEnum[12]{
 void setup() {
     ble.begin(9600);
     Serial.begin(9600);
-    MotorComt *leftMotor = new MotorComt(APIN1, APIN2, ENA, CommandRegistry::LEFT_MOTOR_AC,
-                                         CommandRegistry::LEFT_MOTOR_SS);
-    MotorComt *rightMotor = new MotorComt(BPIN1, BPIN2, ENB, CommandRegistry::RIGHT_MOTOR_AC,
-                                          CommandRegistry::RIGHT_MOTOR_SS);
-    StepperComt *stepperComt2 = new StepperComt(48, STEPPER1_PIN4, STEPPER1_PIN2, STEPPER1_PIN3, STEPPER1_PIN1,
-                                                CommandRegistry::SERVO2A, CommandRegistry::SERVO2_SS,
-                                                CommandRegistry::SERVO2_RESET, 5.704, 500);
-    StepperComt *stepperComt3 = new StepperComt(48, STEPPER2_PIN4, STEPPER2_PIN2, STEPPER2_PIN3, STEPPER2_PIN1,
-                                                CommandRegistry::SERVO3A, CommandRegistry::SERVO3_SS,
-                                                CommandRegistry::SERVO3_RESET, 5.704, 500);
-    ServoComt *servoComt = new ServoComt(CommandRegistry::SERVO1SS, CommandRegistry::SERVO1A, SERVO_PIN, 130);
+    auto *leftMotor = new MotorComt(APIN1, APIN2, ENA, CommandRegistry::LEFT_MOTOR_AC,
+                                    CommandRegistry::LEFT_MOTOR_SS);
+    auto *rightMotor = new MotorComt(BPIN1, BPIN2, ENB, CommandRegistry::RIGHT_MOTOR_AC,
+                                     CommandRegistry::RIGHT_MOTOR_SS);
+    auto *stepperComt2 = new StepperComt(48, STEPPER1_PIN4, STEPPER1_PIN2, STEPPER1_PIN3, STEPPER1_PIN1,
+                                         CommandRegistry::SERVO2A, CommandRegistry::SERVO2_SS,
+                                         CommandRegistry::SERVO2_RESET, 5.704, 500);
+    auto *stepperComt3 = new StepperComt(48, STEPPER2_PIN4, STEPPER2_PIN2, STEPPER2_PIN3, STEPPER2_PIN1,
+                                         CommandRegistry::SERVO3A, CommandRegistry::SERVO3_SS,
+                                         CommandRegistry::SERVO3_RESET, 5.704, 500);
+    auto *servoComt = new ServoComt(CommandRegistry::SERVO1SS, CommandRegistry::SERVO1A, SERVO_PIN, 130);
     vehicle.attachVehicleComt(*leftMotor);
     vehicle.attachVehicleComt(*rightMotor);
     vehicle.attachVehicleComt(*servoComt);
@@ -84,11 +84,11 @@ void loop() {
             uint8_t count(0);
             int i;
             while ((i = command.lastIndexOf(":")) != -1) {
-                params[count++] = command.substring(i + 1).toInt();
+                params[count++] = command.substring(static_cast<unsigned int>(i + 1)).toInt();
 #ifdef DEBUG
                 Serial.println(command.substring(i + 1));
 #endif
-                command = command.substring(0, i);
+                command = command.substring(0, static_cast<unsigned int>(i));
             }
 #ifdef DEBUG
             Serial.println(command);

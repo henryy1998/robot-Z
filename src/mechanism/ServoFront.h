@@ -24,10 +24,8 @@ private:
     const uint8_t pin;
     const uint16_t mini;
     const uint16_t maxi;
-    bool arrival{false};
     Servo servo;
     uint8_t destAngle{90};
-    unsigned long lastTimeAc{0};
 
     int currentPos{90};
 };
