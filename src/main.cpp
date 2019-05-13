@@ -94,7 +94,12 @@ void loop() {
 #ifdef DEBUG
             Serial.println(command);
 #endif
-            vehicle.command(resolveCommand(command), params);
+
+            CommandRegistry registry = resolveCommand(command);
+
+            if (registry != CommandRegistry::NULLCOMMAND) {
+                vehicle.command(registry, params);
+            }
         }
 
 
