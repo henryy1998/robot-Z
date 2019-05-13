@@ -14,7 +14,7 @@
 
 ServoFront::ServoFront(uint8_t defalutAngle, uint8_t pin, uint16_t minPulse = MIN_PULSE_WIDTH,
                        uint16_t maxPulse = MAX_PULSE_WIDTH) : pin(pin), mini(minPulse), maxi(maxPulse) {
-    servo.attach(pin);
+    servo.attach(pin, minPulse, maxPulse);
     servo.write(defalutAngle);
 }
 
@@ -27,7 +27,7 @@ void ServoFront::activate() {
 #endif
     int distance = destAngle - currentPos;
     if (abs(distance) > TOLERANCE) {
-        servo.attach(pin);
+        servo.attach(pin, mini, maxi);
         while (abs(distance) > TOLERANCE) {
             currentPos = servo.read();
             servo.write(distance > 0 ? STEP + currentPos : -STEP + currentPos);
