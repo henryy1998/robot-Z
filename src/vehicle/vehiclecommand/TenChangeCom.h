@@ -10,7 +10,9 @@
 
 class TenChangeCom : public VehicleCommand {
 public:
-    TenChangeCom(CommandRegistry ident, int16_t &ten);
+    template<class T>
+    TenChangeCom(T ident, int16_t &ten) : VehicleCommand(ident),
+                                          ten(ten) {}
 
 private:
     int16_t &ten;

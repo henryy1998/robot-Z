@@ -10,7 +10,8 @@
 
 class VehicleCommand : public Command {
 public:
-    explicit VehicleCommand(CommandRegistry ident) : Command(ident) {
+    template<class T>
+    explicit VehicleCommand(T ident) : Command(ident) {
     }
 };
 

@@ -11,7 +11,10 @@
 
 class ServoControllCom : public VehicleCommand {
 public:
-    ServoControllCom(CommandRegistry ident, ServoFront &servoFront);
+    template<class T>
+    ServoControllCom(T ident, ServoFront &servoFront)
+            : VehicleCommand(
+            ident), servoFront(servoFront) {}
 
 private:
     void execute(const int16_t *params) override;

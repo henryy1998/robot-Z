@@ -10,7 +10,8 @@
 
 class StepperR : public VehicleCommand {
 public:
-    StepperR(CommandRegistry ident, StepperFront &stepper);
+    template<class T>
+    StepperR(T ident, StepperFront &stepper) : VehicleCommand(ident), stepper(stepper) {}
 
     void execute(const int16_t *params) override;
 

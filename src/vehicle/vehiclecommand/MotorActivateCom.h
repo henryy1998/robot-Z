@@ -11,7 +11,12 @@
 
 class MotorActivateCom : public VehicleCommand {
 public:
-    MotorActivateCom(CommandRegistry ident, Motor &motor, const int16_t &target, int16_t &cSpeed);
+    template<class T>
+    MotorActivateCom(T ident, Motor &motor, const int16_t &target, int16_t &cSpeed) :
+            VehicleCommand(ident),
+            motor(motor),
+            target(target),
+            cSpeed(cSpeed) {}
 
 private:
     void execute(const int16_t *params) override;

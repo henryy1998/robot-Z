@@ -9,15 +9,17 @@
 #include <behavior/VehicleCommand.h>
 #include <mechanism/StepperFront.h>
 
-class StepperAc: public VehicleCommand {
+class StepperAc : public VehicleCommand {
 public:
-    StepperAc(CommandRegistry ident, StepperFront &stepper);
+    template<class T>
+    StepperAc(T ident, StepperFront &stepper) : VehicleCommand(
+            ident), stepper(stepper) {}
 
 private:
     void execute(const int16_t *params) override;
 
 private:
-    StepperFront& stepper;
+    StepperFront &stepper;
 
 };
 

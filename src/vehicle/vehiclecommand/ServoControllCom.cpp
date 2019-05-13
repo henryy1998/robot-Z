@@ -14,6 +14,3 @@ void ServoControllCom::execute(const int16_t *params) {
 #endif
 }
 
-ServoControllCom::ServoControllCom(CommandRegistry ident, ServoFront &servoFront)
-        : VehicleCommand(
-        ident), servoFront(servoFront) {}

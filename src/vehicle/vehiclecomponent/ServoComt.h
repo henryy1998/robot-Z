@@ -13,7 +13,16 @@
 
 class ServoComt : public VehicleComt {
 public:
-    ServoComt(CommandRegistry servoComIdent, CommandRegistry servoAcIdent, uint8_t pin, uint8_t defaultAngle);
+    template<class T>
+    ServoComt(T servoComIdent, T servoAcIdent, uint8_t pin, uint8_t defaultAngle)
+            : servoCom(servoComIdent,
+                       servoFront),
+              servoAc(servoAcIdent,
+                      servoFront),
+              servoFront(pin, defaultAngle) {
+        attachCommand(servoCom);
+        attachCommand(servoAc);
+    }
 
 private:
     ServoFront servoFront;

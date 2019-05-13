@@ -8,6 +8,7 @@
 #include <vehicle/vehiclecomponent/ServoComt.h>
 #include <vehicle/vehiclecomponent/StepperComt.h>
 #include <vehicle/Vehicle.h>
+#include <vehicle/vehiclecomponent/ServoComt.h>
 #include "PinConfig.h"
 
 

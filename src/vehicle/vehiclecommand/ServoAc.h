@@ -11,7 +11,9 @@
 
 class ServoAc : public VehicleCommand {
 public:
-    ServoAc(CommandRegistry ident, ServoFront &servoFront);
+    template<class T>
+    ServoAc(T ident, ServoFront &servoFront) : VehicleCommand(ident),
+                                               servoFront(servoFront) {}
 
     void execute(const int16_t *params) override;
 

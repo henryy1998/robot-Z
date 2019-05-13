@@ -11,10 +11,12 @@
 
 class StepperST : public VehicleCommand {
 public:
-    StepperST(CommandRegistry ident, StepperFront &stepper, double multi);
+    template<class T>
+    StepperST(T ident, StepperFront &stepper, double multi)
+            : VehicleCommand(ident), stepper(stepper), multi(multi) {}
 
 private:
-    StepperFront& stepper;
+    StepperFront &stepper;
     double multi;
 
     void execute(const int16_t *params) override;

@@ -13,7 +13,14 @@ class VehicleComt {
 public:
     VehicleComt();
 
-    void command(CommandRegistry identifier, const int16_t params[5]);
+    template<class T>
+    void command(T identifier, const int16_t *params) {
+        for (uint8_t i(0); i < index; i++) {
+            if (commands[i]->getIdent() == identifier) {
+                commands[i]->execute(params);
+            }
+        }
+    }
 
 protected:
     void attachCommand(VehicleCommand &vehicleCommand);
