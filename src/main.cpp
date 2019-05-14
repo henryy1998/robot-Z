@@ -13,7 +13,7 @@
 
 
 //#define DEBUG
-SoftwareSerial ble(BLE_TX, BLE_RX);
+//SoftwareSerial ble(BLE_TX, BLE_RX);
 int16_t params[5];
 Vehicle vehicle;
 unsigned long buffer{0};
@@ -35,7 +35,7 @@ CommandNode commandEnum[12]{
 
 
 void setup() {
-    ble.begin(9600);
+//    ble.begin(9600);
     Serial.begin(9600);
     auto *leftMotor = new MotorComt(APIN1, APIN2, ENA, CommandRegistry::LEFT_MOTOR_AC,
                                     CommandRegistry::LEFT_MOTOR_SS);
@@ -65,13 +65,13 @@ CommandRegistry resolveCommand(const String &ident) {
 }
 
 void loop() {
-    while (ble.available() > 0) {
+    while (Serial.available() > 0) {
         static char c[20];
         static uint8_t index(0);
-        char next = ble.read();
+        char next = Serial.read();
         while (next != -1 && next != ';' && index < 20 - 1) {
             c[index] = next;
-            next = ble.read();
+            next = Serial.read();
             index += 1;
         }
         c[index] = '\0';

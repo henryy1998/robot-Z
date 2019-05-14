@@ -27,7 +27,7 @@ void ServoFront::activate() {
 #endif
     int distance = destAngle - currentPos;
     if (abs(distance) > TOLERANCE) {
-        servo.attach(pin, mini, maxi);
+//        servo.attach(pin, mini, maxi);
         while (abs(distance) > TOLERANCE) {
             currentPos = servo.read();
             servo.write(distance > 0 ? STEP + currentPos : -STEP + currentPos);
@@ -35,7 +35,7 @@ void ServoFront::activate() {
             currentPos = servo.read();
             distance = destAngle - currentPos;
         }
-        servo.detach();
+//        servo.detach();
     }
 }
 
