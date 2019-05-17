@@ -6,6 +6,7 @@
 #include "StepperFront.h"
 
 #define DISTANCE 25
+//#define DEBUG
 
 StepperFront::StepperFront(Stepper stepper) :
         stepper(stepper), curPos(0), target(0) {}
@@ -46,6 +47,9 @@ void StepperFront::setSpeed(long speed) {
 }
 
 void StepperFront::resetPos() {
+#ifdef DEBUG
+    Serial.println("reset pos");
+#endif
     curPos = 0;
     target = 0;
 }

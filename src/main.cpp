@@ -47,7 +47,7 @@ void setup() {
     auto *stepperComt3 = new StepperComt(48, STEPPER2_PIN4, STEPPER2_PIN2, STEPPER2_PIN3, STEPPER2_PIN1,
                                          CommandRegistry::SERVO3A, CommandRegistry::SERVO3_SS,
                                          CommandRegistry::SERVO3_RESET, 5.704, 500);
-    auto *servoComt = new ServoComt(CommandRegistry::SERVO1SS, CommandRegistry::SERVO1A, SERVO_PIN, 130);
+    auto *servoComt = new ServoComt(CommandRegistry::SERVO1SS, CommandRegistry::SERVO1A, SERVO_PIN, 90);
     vehicle.attachVehicleComt(*leftMotor);
     vehicle.attachVehicleComt(*rightMotor);
     vehicle.attachVehicleComt(*servoComt);
@@ -108,10 +108,10 @@ void loop() {
         vehicle.command(CommandRegistry::LEFT_MOTOR_AC, nullptr);
         vehicle.command(CommandRegistry::RIGHT_MOTOR_AC, nullptr);
         vehicle.command(CommandRegistry::SERVO1A, nullptr);
-#ifdef DEBUG
-        Serial.print("cycle:");
-        Serial.println(buffer);
-#endif
+//#ifdef DEBUG
+//        Serial.print("cycle:");
+//        Serial.println(buffer);
+//#endif
         buffer++;
     }
     vehicle.command(CommandRegistry::SERVO2A, nullptr);
