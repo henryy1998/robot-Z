@@ -12,7 +12,8 @@
 #include "PinConfig.h"
 
 
-#define DEBUG
+//#define DEBUG
+#define BUFFER_LENGTH 30
 //SoftwareSerial ble(BLE_TX, BLE_RX);
 int16_t params[5];
 Vehicle vehicle;
@@ -75,10 +76,10 @@ void reorder(int16_t *array, uint8_t length) {
 
 void loop() {
     while (Serial.available() > 0) {
-        static char c[20];
+        static char c[BUFFER_LENGTH];
         static uint8_t index(0);
         char next = Serial.read();
-        while (next != -1 && next != ';' && index < 20 - 1) {
+        while (next != -1 && next != ';' && index < BUFFER_LENGTH - 1) {
             c[index] = next;
             next = Serial.read();
             index += 1;
