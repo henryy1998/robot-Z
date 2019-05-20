@@ -12,7 +12,7 @@
 #include "PinConfig.h"
 
 
-//#define DEBUG
+#define DEBUG
 //SoftwareSerial ble(BLE_TX, BLE_RX);
 int16_t params[5];
 Vehicle vehicle;
@@ -109,8 +109,8 @@ void loop() {
             if (registry != CommandRegistry::NULLCOMMAND) {
                 reorder(params, count);
 #ifdef DEBUG
-                for(int i=0;i<count;i++){
-                    Serial.prtinln(params[i]);
+                for (int i = 0; i < count; i++) {
+                    Serial.println(params[i]);
                 }
 #endif
                 vehicle.command(registry, params);
