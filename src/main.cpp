@@ -35,7 +35,6 @@ CommandNode commandEnum[12]{
 
 
 void setup() {
-//    ble.begin(9600);
     Serial.begin(9600);
     auto *leftMotor = new MotorComt(APIN1, APIN2, ENA, CommandRegistry::LEFT_MOTOR_AC,
                                     CommandRegistry::LEFT_MOTOR_SS);
@@ -109,6 +108,11 @@ void loop() {
 
             if (registry != CommandRegistry::NULLCOMMAND) {
                 reorder(params, count);
+#ifdef DEBUG
+                for(int i=0;i<count;i++){
+                    Serial.prtinln(params[i]);
+                }
+#endif
                 vehicle.command(registry, params);
             }
         }
