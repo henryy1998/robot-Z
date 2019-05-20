@@ -64,6 +64,16 @@ CommandRegistry resolveCommand(const String &ident) {
     return CommandRegistry::NULLCOMMAND;
 }
 
+void reorder(int16_t *array, uint8_t length) {
+    const int finalIndex = length / 2;
+    for (uint8_t i = 0; i < finalIndex; i++) {
+        int16_t swap = array[i];
+        const int j = length - i - 1;
+        array[i] = array[j];
+        array[j] = swap;
+    }
+}
+
 void loop() {
     while (Serial.available() > 0) {
         static char c[20];
@@ -98,6 +108,7 @@ void loop() {
             CommandRegistry registry = resolveCommand(command);
 
             if (registry != CommandRegistry::NULLCOMMAND) {
+                reorder(params, count);
                 vehicle.command(registry, params);
             }
         }
