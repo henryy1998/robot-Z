@@ -10,7 +10,6 @@
 #include <vehicle/Vehicle.h>
 #include <vehicle/vehiclecomponent/ServoComt.h>
 #include "PinConfig.h"
-#include <sensor/UltrasonicSensor.h>
 
 void setup() {
 
